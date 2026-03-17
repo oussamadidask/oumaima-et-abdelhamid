@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oumaïma & Abdelhamid — 28 Août 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════════
+   OUMAÏMA & ABDELHAMID — Moderne Marocain V2
+   ══════════════════════════════════════════════ */
+:root {
+  --teal: #163b3b;
+  --teal-deep: #0c2525;
+  --teal-mid: #1e4e4e;
+  --gold: #e2b753;
+  --gold-bright: #f0ca5e;
+  --gold-dim: rgba(226,183,83,0.45);
+  --gold-subtle: rgba(226,183,83,0.12);
+  --terracotta: #c17a50;
+  --terracotta-light: #d4956e;
+  --sand: #f5efe6;
+  --sand-warm: #ede4d6;
+  --text-dark: #1a1a1a;
+  --text-body: #4a4540;
+  --text-muted: #8a8078;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--sand);color:var(--text-dark);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── Reveal ── */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.15s}.reveal-delay-2{transition-delay:.3s}.reveal-delay-3{transition-delay:.45s}
+
+/* ══ LANGUAGE PICKER ══ */
+.lang-bar{
+  position:fixed;top:0;right:0;z-index:200;
+  display:flex;gap:0;
+  background:rgba(12,37,37,0.85);
+  border-radius:0 0 0 8px;
+  overflow:hidden;
+  backdrop-filter:blur(8px);
+}
+.lang-btn{
+  padding:.45rem .7rem;
+  font-size:.65rem;font-weight:600;letter-spacing:.08em;
+  color:rgba(226,183,83,0.5);
+  background:none;border:none;cursor:pointer;
+  transition:all .3s;font-family:'Inter',sans-serif;
+}
+.lang-btn:hover{color:var(--gold)}
+.lang-btn.active{color:var(--gold-bright);background:rgba(226,183,83,0.1)}
+
+/* ══ NAV ══ */
+nav{position:fixed;top:0;width:100%;z-index:100;padding:0 2rem;transition:all .4s}
+nav.scrolled{background:rgba(12,37,37,0.95);backdrop-filter:blur(12px);box-shadow:0 1px 20px rgba(0,0,0,.2)}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:center;align-items:center;gap:.5rem;height:60px}
+nav a{color:var(--gold-dim);text-decoration:none;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;padding:.5rem .75rem;border-radius:4px;transition:all .3s}
+nav a:hover,nav a.active{color:var(--gold-bright);background:rgba(226,183,83,0.08)}
+nav .nav-dot{width:2px;height:2px;background:rgba(226,183,83,0.2);border-radius:50%}
+
+/* ══ HERO ══ */
+.hero{min-height:100vh;min-height:100dvh;background:var(--teal-deep);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.hero-arch{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:460px;height:620px;opacity:0;animation:archReveal 2s .5s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes archReveal{to{opacity:1}}
+
+.hero-particles{position:absolute;inset:0;overflow:hidden}
+.particle{position:absolute;opacity:0;animation:float 20s infinite linear}
+.particle:nth-child(1){left:10%;top:20%;animation-delay:0s;animation-duration:25s}
+.particle:nth-child(2){left:80%;top:15%;animation-delay:3s;animation-duration:22s}
+.particle:nth-child(3){left:25%;top:70%;animation-delay:7s;animation-duration:28s}
+.particle:nth-child(4){left:70%;top:65%;animation-delay:5s;animation-duration:20s}
+.particle:nth-child(5){left:50%;top:40%;animation-delay:10s;animation-duration:30s}
+.particle:nth-child(6){left:15%;top:85%;animation-delay:2s;animation-duration:24s}
+.particle:nth-child(7){left:85%;top:50%;animation-delay:8s;animation-duration:26s}
+.particle:nth-child(8){left:40%;top:10%;animation-delay:12s;animation-duration:23s}
+@keyframes float{0%{opacity:0;transform:translateY(30px) rotate(0deg)}10%{opacity:.15}90%{opacity:.15}100%{opacity:0;transform:translateY(-30px) rotate(90deg)}}
+
+.hero-content{position:relative;z-index:2}
+.hero-location{font-size:.72rem;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:2.5rem;opacity:0;animation:fadeUp 1s 1s cubic-bezier(.16,1,.3,1) forwards}
+.hero-names{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3.5rem,9vw,7.5rem);color:var(--sand);line-height:1.05;opacity:0;animation:fadeUp 1.2s .6s cubic-bezier(.16,1,.3,1) forwards}
+.hero-names .amp{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:.4em;color:var(--gold-bright);margin:.15em 0;letter-spacing:.05em}
+.hero-date{margin-top:3rem;opacity:0;animation:fadeUp 1s 1.4s cubic-bezier(.16,1,.3,1) forwards}
+.hero-date-inner{display:inline-flex;align-items:center;gap:1.2rem;padding:.8rem 2rem;border:1px solid rgba(226,183,83,0.2);border-radius:100px;background:rgba(226,183,83,0.05)}
+.hero-date-inner span{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,239,230,0.55)}
+.hero-date-inner .dot{width:3px;height:3px;background:var(--gold-bright);border-radius:50%}
+
+.countdown{margin-top:2.5rem;display:flex;gap:1.5rem;justify-content:center;opacity:0;animation:fadeUp 1s 1.8s cubic-bezier(.16,1,.3,1) forwards}
+.countdown-item{text-align:center}
+.countdown-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--gold-bright);line-height:1}
+.countdown-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,239,230,0.3);margin-top:.4rem}
+
+.hero-family{margin-top:3rem;max-width:580px;padding:0 1rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;line-height:2;color:rgba(245,239,230,0.7);opacity:0;animation:fadeUp 1s 2.2s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+
+.scroll-cta{position:absolute;bottom:2.5rem;display:flex;flex-direction:column;align-items:center;gap:.75rem;cursor:pointer;opacity:0;animation:fadeUp 1s 2.8s cubic-bezier(.16,1,.3,1) forwards}
+.scroll-cta span{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(245,239,230,0.25)}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(.7)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ══ HERO SLIDESHOW ══ */
+.hero-slideshow{position:absolute;inset:0;z-index:0}
+.hero-slide{position:absolute;inset:0;opacity:0;animation:heroSlide 24s infinite;will-change:opacity,transform}
+.hero-slide img{width:100%;height:100%;object-fit:cover;animation:kenBurnsHero 24s infinite}
+.hero-slide:nth-child(1){animation-delay:0s}.hero-slide:nth-child(1) img{animation-delay:0s}
+.hero-slide:nth-child(2){animation-delay:8s}.hero-slide:nth-child(2) img{animation-delay:8s}
+.hero-slide:nth-child(3){animation-delay:16s}.hero-slide:nth-child(3) img{animation-delay:16s}
+@keyframes heroSlide{0%,2%{opacity:0}5%,30%{opacity:1}35%,100%{opacity:0}}
+@keyframes kenBurnsHero{0%,2%{transform:scale(1)}30%{transform:scale(1.12)}35%,100%{transform:scale(1.12)}}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(12,37,37,0.72) 0%,rgba(12,37,37,0.55) 40%,rgba(12,37,37,0.78) 100%)}
+
+/* ══ PHOTO MARQUEE ══ */
+.photo-marquee{overflow:hidden;background:var(--teal-deep);padding:1rem 0;position:relative}
+.photo-marquee::before,.photo-marquee::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.photo-marquee::before{left:0;background:linear-gradient(90deg,var(--teal-deep),transparent)}
+.photo-marquee::after{right:0;background:linear-gradient(-90deg,var(--teal-deep),transparent)}
+.marquee-track{display:flex;gap:.75rem;animation:marqueeScroll 40s linear infinite;width:max-content}
+.marquee-track img{height:180px;border-radius:8px;object-fit:cover;flex-shrink:0;opacity:.8;transition:opacity .4s}
+.marquee-track img:hover{opacity:1}
+
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ══ PHOTO INTERLUDES ══ */
+.photo-interlude{height:45vh;min-height:300px;position:relative;overflow:hidden}
+.photo-interlude img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-interlude-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,37,37,0.3) 0%,rgba(12,37,37,0.15) 50%,rgba(12,37,37,0.4) 100%)}
+.photo-interlude-text{position:absolute;bottom:2.5rem;left:0;right:0;text-align:center;z-index:2;color:var(--sand);opacity:.9}
+.photo-interlude-text span{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.6rem;font-weight:300;text-shadow:0 2px 20px rgba(0,0,0,.4)}
+
+/* Ken Burns for interludes */
+.photo-interlude img{animation:kenBurns 20s ease-in-out infinite alternate}
+@keyframes kenBurns{0%{transform:scale(1) translateY(0)}100%{transform:scale(1.08) translateY(-2%)}}
+
+/* ══ SECTIONS ══ */
+.wave-transition{height:120px;position:relative;overflow:hidden}
+.wave-transition.sand-to-teal{background:var(--sand)}.wave-transition.sand-to-teal::after{content:'';position:absolute;bottom:0;left:-5%;right:-5%;height:120px;background:var(--teal);border-radius:50% 50% 0 0/100% 100% 0 0}
+.wave-transition.teal-to-sand{background:var(--teal)}.wave-transition.teal-to-sand::after{content:'';position:absolute;bottom:0;left:-5%;right:-5%;height:120px;background:var(--sand);border-radius:50% 50% 0 0/100% 100% 0 0}
+.wave-transition.sand-to-deep{background:var(--sand)}.wave-transition.sand-to-deep::after{content:'';position:absolute;bottom:0;left:-5%;right:-5%;height:120px;background:var(--teal-deep);border-radius:50% 50% 0 0/100% 100% 0 0}
+.wave-transition.deep-to-sand{background:var(--teal-deep)}.wave-transition.deep-to-sand::after{content:'';position:absolute;bottom:0;left:-5%;right:-5%;height:120px;background:var(--sand);border-radius:50% 50% 0 0/100% 100% 0 0}
+.wave-transition.teal-to-deep{background:var(--teal)}.wave-transition.teal-to-deep::after{content:'';position:absolute;bottom:0;left:-5%;right:-5%;height:120px;background:var(--teal-deep);border-radius:50% 50% 0 0/100% 100% 0 0}
+
+.section-light{background:var(--sand);padding:5rem 2rem 4rem}
+.section-teal{background:var(--teal);padding:5rem 2rem 4rem}
+.section-deep{background:var(--teal-deep);padding:5rem 2rem 4rem}
+.section-inner{max-width:900px;margin:0 auto}
+
+.section-label{font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;font-weight:600;margin-bottom:.75rem}
+.section-label.gold{color:var(--gold)}.section-label.terracotta{color:var(--terracotta)}
+.section-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,5vw,2.8rem);margin-bottom:1rem}
+.section-title.light{color:var(--sand)}.section-title.dark{color:var(--teal-deep)}
+.section-rule{width:40px;height:2px;margin-bottom:2.5rem}
+.section-rule.terracotta{background:var(--terracotta)}.section-rule.gold{background:var(--gold)}
+.section-intro{font-size:.95rem;line-height:1.75;max-width:600px;margin-bottom:3rem}
+.section-intro.muted{color:var(--text-muted)}.section-intro.light{color:rgba(245,239,230,0.55)}
+
+/* ══ PROGRAMME ══ */
+.programme-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.prog-step{text-align:center;padding:2rem 1.25rem;border-radius:16px;background:rgba(193,122,80,0.04);border:1px solid rgba(193,122,80,0.1);transition:all .4s}
+.prog-step:hover{background:rgba(193,122,80,0.08);border-color:rgba(193,122,80,0.25);transform:translateY(-4px)}
+.prog-step .step-icon{font-size:1.8rem;margin-bottom:1rem}
+.prog-step .step-time{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terracotta);font-weight:600;margin-bottom:.5rem}
+.prog-step .step-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;color:var(--teal-deep);margin-bottom:.3rem}
+.prog-step .step-desc{font-size:.82rem;color:var(--text-muted);line-height:1.5}
+
+/* ══ INFOS PRATIQUES ══ */
+.infos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem}
+.info-card{padding:1.75rem;border-radius:12px;background:rgba(245,239,230,0.05);border:1px solid rgba(226,183,83,0.1);transition:all .3s}
+.info-card:hover{background:rgba(245,239,230,0.08);border-color:rgba(226,183,83,0.25)}
+.info-card .info-icon{font-size:1.5rem;margin-bottom:.75rem}
+.info-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--sand);margin-bottom:.4rem}
+.info-card p{font-size:.84rem;line-height:1.6;color:rgba(245,239,230,0.5)}
+.info-card a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(226,183,83,0.3);transition:border-color .3s}
+.info-card a:hover{border-color:var(--gold)}
+
+/* ══ HÉBERGEMENT ══ */
+.hebergement-cols{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.hebergement-col h3{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.hebergement-col h3 .hdot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.hebergement-col ul{list-style:none}
+.hebergement-col li{padding:.6rem 0;border-bottom:1px solid rgba(193,122,80,0.08);font-size:.9rem;display:flex;align-items:center;gap:.5rem}
+.hebergement-col li:last-child{border-bottom:none}
+.quartier-note{margin-top:.75rem;font-size:.82rem;font-style:italic;color:var(--text-muted);line-height:1.5}
+
+/* ══ EXPLORER ══ */
+.duration-picker{display:flex;gap:.75rem;margin-bottom:2rem;flex-wrap:wrap}
+.dur-btn{padding:.65rem 1.25rem;border-radius:100px;border:1px solid rgba(226,183,83,0.2);background:transparent;color:rgba(245,239,230,0.5);font-family:'Inter',sans-serif;font-size:.75rem;letter-spacing:.08em;cursor:pointer;transition:all .3s}
+.dur-btn:hover{border-color:rgba(226,183,83,0.4);color:var(--gold)}
+.dur-btn.active{background:var(--gold-subtle);border-color:var(--gold);color:var(--gold-bright);font-weight:500}
+
+/* Itinerary display */
+.itinerary{margin-bottom:2.5rem}
+.itinerary-day{margin-bottom:1.5rem;padding:1.25rem 1.5rem;border-radius:10px;background:rgba(245,239,230,0.04);border:1px solid rgba(226,183,83,0.08)}
+.itinerary-day-title{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.6rem}
+.itinerary-day-content{font-size:.88rem;line-height:1.7;color:rgba(245,239,230,0.6)}
+.itinerary-day-content a{color:var(--gold);text-decoration:none;border-bottom:1px dotted rgba(226,183,83,0.4)}
+
+
+.cat-label{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:2rem 0 1rem;display:flex;align-items:center;gap:.6rem}
+.cat-label::after{content:'';flex:1;height:1px;background:rgba(226,183,83,0.15)}
+
+.explore-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1rem}
+.explore-card{padding:1.5rem;border-radius:10px;background:rgba(245,239,230,0.04);border:1px solid rgba(226,183,83,0.1);transition:all .35s;display:flex;flex-direction:column}
+.explore-card:hover{background:rgba(245,239,230,0.07);border-color:rgba(226,183,83,0.3);transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.15)}
+.explore-card h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;color:var(--sand);margin-bottom:.4rem}
+.explore-card p{font-size:.82rem;line-height:1.6;color:rgba(245,239,230,0.45);margin-bottom:auto;padding-bottom:1rem}
+.explore-card-footer{display:flex;justify-content:space-between;align-items:center;padding-top:.75rem;border-top:1px solid rgba(226,183,83,0.08)}
+.explore-badge{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .65rem;border:1px solid rgba(226,183,83,0.2);border-radius:3px;color:var(--gold);font-weight:500}
+.explore-link{font-size:.72rem;color:var(--gold-bright);text-decoration:none;font-weight:500;display:flex;align-items:center;gap:.25rem;transition:all .3s}
+.explore-link:hover{color:var(--gold)}
+.explore-link .arrow{transition:transform .3s}
+.explore-card:hover .explore-link .arrow{transform:translateX(3px)}
+
+.tip-box{margin-top:1rem;padding:1.25rem 1.5rem;border-radius:8px;background:rgba(226,183,83,0.06);border-left:3px solid var(--gold);font-size:.85rem;line-height:1.6;color:rgba(245,239,230,0.6)}
+.tip-box strong{color:var(--sand)}
+.tip-box a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(226,183,83,0.3)}
+.tip-box a:hover{border-color:var(--gold)}
+.tip-box-light{background:rgba(193,122,80,0.06);border-left-color:var(--terracotta);color:var(--text-body)}
+.tip-box-light strong{color:var(--teal-deep)}
+.tip-box-light a{color:var(--terracotta)}
+
+/* ══ GIFT SECTION ══ */
+.gift-section{text-align:center}
+.gift-card{max-width:480px;margin:2.5rem auto 0;padding:3rem 2.5rem;border-radius:16px;background:linear-gradient(135deg,rgba(193,122,80,0.08),rgba(226,183,83,0.04));border:1px solid rgba(226,183,83,0.12);position:relative;overflow:hidden}
+.gift-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--terracotta),var(--gold),var(--terracotta))}
+.gift-icon{font-size:2.5rem;margin-bottom:1.25rem}
+.gift-card h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;font-style:italic;color:var(--sand);margin-bottom:.3rem}
+.gift-destination{font-size:.68rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.gift-card>p{font-size:.9rem;line-height:1.75;color:rgba(245,239,230,0.55);font-style:italic}
+.gift-note{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(226,183,83,0.1);font-size:.8rem;color:rgba(245,239,230,0.35);font-style:italic}
+
+/* ══ FOOTER ══ */
+footer{background:var(--teal-deep);padding:3.5rem 2rem;text-align:center;border-top:1px solid rgba(226,183,83,0.06)}
+.footer-names{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--gold);margin-bottom:.5rem}
+.footer-details{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,239,230,0.2)}
+.footer-heart{margin-top:1.5rem;font-size:.7rem;color:rgba(245,239,230,0.15);font-style:italic}
+
+/* Google Maps embed */
+.gmap-embed{width:100%;border:0;border-radius:12px;display:block}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:768px){
+  nav .nav-inner{gap:0;flex-wrap:wrap;height:auto;padding:.5rem 0}
+  nav a{font-size:.58rem;padding:.4rem .5rem;letter-spacing:.15em}
+  nav .nav-dot{display:none}
+  .hero-arch{width:320px;height:440px}
+  .countdown{gap:1rem}.countdown-num{font-size:1.8rem}
+  .programme-grid{grid-template-columns:1fr 1fr}
+  .hebergement-cols{grid-template-columns:1fr}
+  .explore-cards{grid-template-columns:1fr}
+  .infos-grid{grid-template-columns:1fr}
+  .wave-transition{height:70px}.wave-transition::after{height:70px}
+  .marquee-track img{height:130px}
+  .photo-interlude{height:35vh;min-height:220px}
+  .photo-interlude-text span{font-size:1.2rem}
+  .duration-picker{gap:.5rem}
+  .dur-btn{padding:.5rem .9rem;font-size:.68rem}
+}
+@media(max-width:480px){
+  .programme-grid{grid-template-columns:1fr}
+  .hero-names{font-size:3rem}
+  .hero-date-inner{flex-direction:column;gap:.4rem}
+  .hero-date-inner .dot{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ LANGUAGE PICKER ═══ -->
+<div class="lang-bar">
+  <button class="lang-btn active" data-lang="fr">FR</button>
+  <button class="lang-btn" data-lang="en">EN</button>
+  <button class="lang-btn" data-lang="de">DE</button>
+</div>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="#programme" data-i18n="nav.programme">Programme</a>
+    <span class="nav-dot"></span>
+    <a href="#infos" data-i18n="nav.infos">Infos Pratiques</a>
+    <span class="nav-dot"></span>
+    <a href="#hebergement" data-i18n="nav.hebergement">Hébergement</a>
+    <span class="nav-dot"></span>
+    <a href="#explorer" data-i18n="nav.explorer">Explorer</a>
+    <span class="nav-dot"></span>
+    <a href="#liste" data-i18n="nav.liste">Liste de Mariage</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <div class="hero-slideshow">
+    <div class="hero-slide"><img src="https://images.unsplash.com/photo-1740602550091-0943d7cfb720?auto=format&fit=crop&w=1920&q=80" alt="Casablanca vue côtière avec l'océan Atlantique" loading="eager"></div>
+    <div class="hero-slide"><img src="https://images.unsplash.com/photo-1738412349712-13379f66738c?auto=format&fit=crop&w=1920&q=80" alt="Vue aérienne de Tanger et l'océan" loading="lazy"></div>
+    <div class="hero-slide"><img src="https://images.unsplash.com/photo-1761137710839-e6b5fed8c1de?auto=format&fit=crop&w=1920&q=80" alt="Coucher de soleil marocain avec palmier et océan" loading="lazy"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-particles">
+    <svg class="particle" width="16" height="16" viewBox="0 0 16 16"><polygon points="8,0 9.5,6.5 16,8 9.5,9.5 8,16 6.5,9.5 0,8 6.5,6.5" fill="rgba(226,183,83,0.3)"/></svg>
+    <svg class="particle" width="12" height="12" viewBox="0 0 16 16"><polygon points="8,0 9.5,6.5 16,8 9.5,9.5 8,16 6.5,9.5 0,8 6.5,6.5" fill="rgba(193,122,80,0.25)"/></svg>
+    <svg class="particle" width="10" height="10" viewBox="0 0 16 16"><polygon points="8,0 9.5,6.5 16,8 9.5,9.5 8,16 6.5,9.5 0,8 6.5,6.5" fill="rgba(226,183,83,0.2)"/></svg>
+    <svg class="particle" width="14" height="14" viewBox="0 0 16 16"><polygon points="8,0 9.5,6.5 16,8 9.5,9.5 8,16 6.5,9.5 0,8 6.5,6.5" fill="rgba(193,122,80,0.2)"/></svg>
+    <svg class="particle" width="8" height="8" viewBox="0 0 16 16"><polygon points="8,0 9.5,6.5 16,8 9.5,9.5 8,16 6.5,9.5 0,8 6.5,6.5" fill="rgba(226,183,83,0.25)"/></svg>
+    <svg class="particle" width="11" height="11" viewBox="0 0 16 16"><polygon points="8,0 9.5,6.5 16,8 9.5,9.5 8,16 6.5,9.5 0,8 6.5,6.5" fill="rgba(226,183,83,0.15)"/></svg>
+    <svg class="particle" width="9" height="9" viewBox="0 0 16 16"><polygon points="8,0 9.5,6.5 16,8 9.5,9.5 8,16 6.5,9.5 0,8 6.5,6.5" fill="rgba(193,122,80,0.2)"/></svg>
+    <svg class="particle" width="13" height="13" viewBox="0 0 16 16"><polygon points="8,0 9.5,6.5 16,8 9.5,9.5 8,16 6.5,9.5 0,8 6.5,6.5" fill="rgba(226,183,83,0.18)"/></svg>
+  </div>
+  <svg class="hero-arch" viewBox="0 0 460 620" fill="none"><path d="M30 620 V280 Q30 30 230 30 Q430 30 430 280 V620" stroke="rgba(226,183,83,0.14)" stroke-width="1" fill="none"/><path d="M60 620 V285 Q60 60 230 60 Q400 60 400 285 V620" stroke="rgba(226,183,83,0.08)" stroke-width="1" fill="none"/><circle cx="230" cy="260" r="70" stroke="rgba(226,183,83,0.06)" stroke-width="1" fill="none"/><polygon points="230,10 233,18 241,18 234.5,23 237,31 230,26 223,31 225.5,23 219,18 227,18" fill="rgba(226,183,83,0.18)"/></svg>
+
+  <div class="hero-content">
+    <div class="hero-location" data-i18n="hero.location">Casablanca, Maroc</div>
+    <h1 class="hero-names">
+      Oumaïma
+      <span class="amp">&amp;</span>
+      Abdelhamid
+    </h1>
+    <div class="hero-date">
+      <div class="hero-date-inner">
+        <span data-i18n="hero.date">28 Août 2025</span>
+        <div class="dot"></div>
+        <span data-i18n="hero.time">À partir de 16h</span>
+        <div class="dot"></div>
+        <span>Dar Aïn Asserdoun</span>
+      </div>
+    </div>
+    <div class="countdown" id="countdown">
+      <div class="countdown-item"><div class="countdown-num" id="cd-days">--</div><div class="countdown-label" data-i18n="hero.days">Jours</div></div>
+      <div class="countdown-item"><div class="countdown-num" id="cd-hours">--</div><div class="countdown-label" data-i18n="hero.hours">Heures</div></div>
+      <div class="countdown-item"><div class="countdown-num" id="cd-min">--</div><div class="countdown-label">Min</div></div>
+      <div class="countdown-item"><div class="countdown-num" id="cd-sec">--</div><div class="countdown-label">Sec</div></div>
+    </div>
+    <p class="hero-family" data-i18n="hero.family">
+      Les familles Atlassi et Belhaji sont heureuses de vous accueillir
+      pour la célébration de l'union sacrée de leurs enfants
+      Oumaïma et Abdelhamid.
+    </p>
+  </div>
+  <div class="scroll-cta" onclick="document.getElementById('programme').scrollIntoView({behavior:'smooth'})">
+    <span data-i18n="hero.discover">Découvrir</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ PHOTO MARQUEE ═══ -->
+<div class="photo-marquee">
+  <div class="marquee-track" id="marqueeTrack">
+    <img src="https://images.unsplash.com/photo-1664961789371-5a05656ef318?auto=format&fit=crop&w=500&h=300&q=80" alt="Fontaine et palmiers, Casablanca" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1514911612757-11b536d60be0?auto=format&fit=crop&w=500&h=300&q=80" alt="Kasbah des Oudayas, Rabat" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1738412349360-0373ee52d08a?auto=format&fit=crop&w=500&h=300&q=80" alt="Coucher de soleil, Tanger" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1760681557052-d9f03999da5f?auto=format&fit=crop&w=500&h=300&q=80" alt="Arc et zellige marocains" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1706203644187-a719449587bb?auto=format&fit=crop&w=500&h=300&q=80" alt="Casablanca bord de mer" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1553523290-62cc96300906?auto=format&fit=crop&w=500&h=300&q=80" alt="Murs bleu et blanc, Oudayas Rabat" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1677860612258-721552d298b4?auto=format&fit=crop&w=500&h=300&q=80" alt="Palmiers et montagnes, Maroc" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1598022124758-26d09adcb7b6?auto=format&fit=crop&w=500&h=300&q=80" alt="Tour Hassan, Rabat" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1772411534917-d6b180f70c1a?auto=format&fit=crop&w=500&h=300&q=80" alt="Porte bleue marocaine" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1749286601978-872f78ec1cc7?auto=format&fit=crop&w=500&h=300&q=80" alt="Côte de Tanger" loading="lazy">
+  </div>
+</div>
+
+<!-- ═══ PROGRAMME ═══ -->
+<section class="section-light" id="programme">
+  <div class="section-inner">
+    <div class="section-label terracotta reveal" data-i18n="prog.label">Déroulé de la Journée</div>
+    <h2 class="section-title dark reveal reveal-delay-1" data-i18n="prog.title">Le Programme</h2>
+    <div class="section-rule terracotta reveal reveal-delay-2"></div>
+    <div class="programme-grid" id="programmeGrid">
+      <div class="prog-step reveal"><div class="step-icon">🥂</div><div class="step-time">16h00</div><div class="step-name" data-i18n="prog.s1.name">Accueil des invités</div><div class="step-desc" data-i18n="prog.s1.desc">Arrivée à Dar Aïn Asserdoun, Bouskoura. Bienvenue, cocktail d'accueil et installation.</div></div>
+      <div class="prog-step reveal reveal-delay-1"><div class="step-icon">✨</div><div class="step-time">17h00</div><div class="step-name" data-i18n="prog.s2.name">Début de la cérémonie</div><div class="step-desc" data-i18n="prog.s2.desc">Petits fours et introduction musicale.</div></div>
+      <div class="prog-step reveal reveal-delay-2"><div class="step-icon">🎶</div><div class="step-time" data-i18n="prog.s3.time">18h00 — 01h00</div><div class="step-name" data-i18n="prog.s3.name">Célébration, Dîner & Festivités</div><div class="step-desc" data-i18n="prog.s3.desc">Dîner festif, danse, musique et moments de bonheur partagés en famille et entre amis jusqu'au bout de la nuit.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PHOTO INTERLUDE 1 — Rabat sunset ═══ -->
+<div class="photo-interlude">
+  <img src="https://images.unsplash.com/photo-1655376406845-23c48a618687?auto=format&fit=crop&w=1920&q=80" alt="Coucher de soleil sur Rabat, Maroc" loading="lazy">
+  <div class="photo-interlude-overlay"></div>
+</div>
+
+<!-- ═══ INFOS PRATIQUES ═══ -->
+<div class="wave-transition sand-to-teal" style="display:none"></div>
+<section class="section-teal" id="infos">
+  <div class="section-inner">
+    <div class="section-label gold reveal" data-i18n="infos.label">Tout ce qu'il faut savoir</div>
+    <h2 class="section-title light reveal reveal-delay-1" data-i18n="infos.title">Infos Pratiques</h2>
+    <div class="section-rule gold reveal reveal-delay-2"></div>
+
+    <div class="infos-grid">
+      <div class="info-card reveal">
+        <div class="info-icon">📍</div>
+        <h3 data-i18n="infos.lieu.title">Lieu</h3>
+        <p data-i18n-html="infos.lieu.desc">Dar Aïn Asserdoun, Bouskoura — à 20 min du centre de Casablanca. <a href="https://maps.app.goo.gl/xvsgP3aBGiTaRvVF6" target="_blank">Voir sur Google Maps</a></p>
+      </div>
+      <div class="info-card reveal reveal-delay-1">
+        <div class="info-icon">👗</div>
+        <h3 data-i18n="infos.dress.title">Dress Code</h3>
+        <p data-i18n="infos.dress.desc">Tenue élégante — caftan et robes sont les bienvenus. Prévoir un éventail et une petite laine : nous sommes en extérieur, il peut faire chaud comme froid.</p>
+      </div>
+      <div class="info-card reveal reveal-delay-2">
+        <div class="info-icon">👶</div>
+        <h3 data-i18n="infos.kids.title">Enfants bienvenus</h3>
+        <p data-i18n="infos.kids.desc">C'est un mariage kif friendly ! Vos enfants sont les bienvenus avec plaisir.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="info-icon">🚗</div>
+        <h3 data-i18n="infos.transport.title">Se rendre au mariage</h3>
+        <p data-i18n-html="infos.transport.desc">Utilisez <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> ou <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> pour venir. Un parking est disponible sur place. Pour le retour, des chauffeurs seront disponibles avec tarif préférentiel.</p>
+      </div>
+      <div class="info-card reveal reveal-delay-1">
+        <div class="info-icon">🛬</div>
+        <h3 data-i18n="infos.airport.title">Aéroport</h3>
+        <p data-i18n="infos.airport.desc">Aéroport Mohammed V (CMN) — 30 min du lieu en voiture. À l'arrivée, rendez-vous aux bornes taxi pour rejoindre votre hébergement.</p>
+      </div>
+      <div class="info-card reveal reveal-delay-2">
+        <div class="info-icon">🅿️</div>
+        <h3 data-i18n="infos.parking.title">Parking</h3>
+        <p data-i18n="infos.parking.desc">Un parking est disponible sur le lieu du mariage. Venez en voiture si vous le souhaitez !</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HÉBERGEMENT ═══ -->
+<div class="wave-transition teal-to-sand"></div>
+<section class="section-light" id="hebergement">
+  <div class="section-inner">
+    <div class="section-label terracotta reveal" data-i18n="heb.label">Où dormir</div>
+    <h2 class="section-title dark reveal reveal-delay-1" data-i18n="heb.title">Hébergement &amp; Carte</h2>
+    <div class="section-rule terracotta reveal reveal-delay-2"></div>
+    <p class="section-intro muted reveal" data-i18n="heb.intro">Deux profils s'offrent à vous : rester proche du lieu pour un retour facile, ou séjourner en centre-ville pour profiter pleinement de Casablanca.</p>
+    <iframe id="venueMap" class="gmap-embed reveal" height="400" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+      src="https://maps.google.com/maps?q=Dar+Ain+Asserdoun+Bouskoura+Casablanca&z=12&output=embed"></iframe>
+    <div class="hebergement-cols reveal">
+      <div class="hebergement-col">
+        <h3><span class="hdot" style="background:#4CAF50"></span> <span data-i18n="heb.nearby">Proches du lieu · 15-25 min</span></h3>
+        <ul>
+          <li>🏢 CFC — Casablanca Finance City</li>
+          <li>🌿 Ferme Bretonne</li>
+          <li>🟢 Oasis</li>
+          <li>🏘️ CIL</li>
+          <li>🌺 Val Fleuri</li>
+        </ul>
+      </div>
+      <div class="hebergement-col">
+        <h3><span class="hdot" style="background:#1a4a4a"></span> <span data-i18n="heb.center">Centre-ville · 30-40 min</span></h3>
+        <ul>
+          <li>⭐ Maarif</li>
+          <li>⭐ Racine</li>
+          <li>⭐ Gauthier</li>
+        </ul>
+        <p class="quartier-note" data-i18n="heb.note">Quartiers animés, idéaux pour profiter pleinement de Casablanca. Budget légèrement plus élevé.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PHOTO INTERLUDE 2 — Paysage marocain palmiers ═══ -->
+<div class="photo-interlude">
+  <img src="https://images.unsplash.com/photo-1762603751901-0f2feb7f547f?auto=format&fit=crop&w=1920&q=80" alt="Paysage marocain avec palmiers au coucher de soleil" loading="lazy">
+  <div class="photo-interlude-overlay"></div>
+</div>
+
+<!-- ═══ EXPLORER ═══ -->
+<div class="wave-transition sand-to-teal" style="display:none"></div>
+<section class="section-teal" id="explorer">
+  <div class="section-inner">
+    <div class="section-label gold reveal" data-i18n="exp.label">Pour vos journées libres</div>
+    <h2 class="section-title light reveal reveal-delay-1" data-i18n="exp.title">Explorer la Région</h2>
+    <div class="section-rule gold reveal reveal-delay-2"></div>
+    <p class="section-intro light reveal" data-i18n="exp.intro">Profitez de votre séjour pour découvrir le Maroc. Sélectionnez la durée de votre séjour pour un programme adapté.</p>
+
+    <div class="duration-picker reveal">
+      <button class="dur-btn active" data-dur="weekend" data-i18n="exp.dur.weekend">Week-end (2 jours)</button>
+      <button class="dur-btn" data-dur="week" data-i18n="exp.dur.week">Séjour (4-5 jours)</button>
+      <button class="dur-btn" data-dur="long" data-i18n="exp.dur.long">Semaine complète</button>
+    </div>
+
+    <!-- Itinerary -->
+    <div class="itinerary reveal" id="itinerary"></div>
+
+    <!-- Explorer map -->
+    <iframe id="explorerMap" class="gmap-embed reveal" height="350" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+      src="https://maps.google.com/maps?q=Casablanca,Morocco&z=12&output=embed"></iframe>
+
+    <!-- Place cards rendered by JS -->
+    <div id="explorePlaces"></div>
+
+    <!-- Transport tips -->
+    <div class="tip-box reveal" id="transportTips" style="margin-top:2rem;"></div>
+  </div>
+</section>
+
+<!-- ═══ PHOTO INTERLUDE 3 — Côte de Tanger ═══ -->
+<div class="photo-interlude">
+  <img src="https://images.unsplash.com/photo-1749286602049-21422fcba427?auto=format&fit=crop&w=1920&q=80" alt="L'océan rencontre la côte, Tanger" loading="lazy">
+  <div class="photo-interlude-overlay"></div>
+</div>
+
+<!-- ═══ LISTE DE MARIAGE ═══ -->
+<div class="wave-transition teal-to-deep"></div>
+<section class="section-deep gift-section" id="liste">
+  <div class="section-inner">
+    <div class="section-label gold reveal" data-i18n="gift.label">Vos idées cadeaux</div>
+    <h2 class="section-title light reveal reveal-delay-1" style="font-style:italic;" data-i18n="gift.title">Liste de Mariage</h2>
+    <div class="section-rule gold reveal reveal-delay-2" style="margin-left:auto;margin-right:auto;"></div>
+    <p class="section-intro light reveal" style="margin-left:auto;margin-right:auto;text-align:center;font-style:italic;" data-i18n="gift.intro">
+      Votre présence est notre plus beau cadeau. Si vous souhaitez néanmoins marquer cet heureux événement, voici ce qui nous toucherait particulièrement.
+    </p>
+    <div class="gift-card reveal" id="voyage-noces">
+      <div class="gift-icon">🌴</div>
+      <h3 data-i18n="gift.honeymoon">Voyage de Noces</h3>
+      <div class="gift-destination">La Réunion</div>
+      <p data-i18n="gift.honeymoon.desc">Si vous souhaitez contribuer à notre aventure et nous rapprocher de l'île intense, chaque contribution sera accueillie avec beaucoup de gratitude.</p>
+      <div class="gift-note" data-i18n="gift.honeymoon.note">Une enveloppe sera disponible le jour du mariage.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-bottom:1.5rem"><polygon points="16,0 18.5,13 32,16 18.5,19 16,32 13.5,19 0,16 13.5,13" fill="rgba(226,183,83,0.2)"/></svg>
+  <div class="footer-names">Oumaïma &amp; Abdelhamid</div>
+  <div class="footer-details">28 Août 2025 · Dar Aïn Asserdoun · Bouskoura, Casablanca</div>
+  <div class="footer-heart" data-i18n="footer.love">Fait avec amour</div>
+</footer>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script>
+// ══════════════════════════════════════════════
+// MARQUEE CLONE (infinite scroll)
+// ══════════════════════════════════════════════
+(function(){
+  const track = document.getElementById('marqueeTrack');
+  if(track){
+    // Clone all images for seamless loop
+    const clone = track.innerHTML;
+    track.innerHTML += clone;
+  }
+})();
+
+// ══════════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════════
+
+const PLACES = [
+  // ── CASABLANCA ──
+  {id:'sqala',name:'La Sqala',city:'casa',cat:'brunch',lat:33.6005,lng:-7.6195,
+   desc:{fr:'Cuisine marocaine authentique dans un bastion historique face à l\'Atlantique.',en:'Authentic Moroccan cuisine in a historic bastion facing the Atlantic.',de:'Authentische marokkanische Küche in einer historischen Bastion am Atlantik.'},
+   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=La+Sqala+Casablanca'},
+  {id:'holybrunch',name:'Holy Brunch',city:'casa',cat:'brunch',lat:33.5880,lng:-7.6320,
+   desc:{fr:'L\'adresse brunch tendance de Casa — ambiance soignée, menu varié et généreux.',en:'The trendy brunch spot in Casa — elegant ambiance, varied and generous menu.',de:'Der angesagte Brunch-Spot in Casa — gepflegte Atmosphäre, vielseitige Karte.'},
+   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Holy+Brunch+Casablanca'},
+  {id:'organic',name:'Organic Kitchen',city:'casa',cat:'dejeuner',lat:33.5750,lng:-7.6280,
+   desc:{fr:'Cuisine saine et généreuse, ingrédients frais. Bowls, wraps et jus naturels.',en:'Healthy and generous cuisine, fresh ingredients. Bowls, wraps and natural juices.',de:'Gesunde, großzügige Küche mit frischen Zutaten. Bowls, Wraps und natürliche Säfte.'},
+   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Organic+Kitchen+Casablanca'},
+  {id:'soy',name:'Soy Restaurant',city:'casa',cat:'dejeuner',lat:33.5620,lng:-7.6140,
+   desc:{fr:'Restaurant japonais au CFC. Sushis frais, service attentionné, excellent rapport qualité-prix.',en:'Japanese restaurant at CFC. Fresh sushi, attentive service, great value.',de:'Japanisches Restaurant im CFC. Frische Sushis, aufmerksamer Service, top Preis-Leistung.'},
+   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Soy+Restaurant+CFC+Casablanca'},
+  {id:'marche',name:'Marché Central',city:'casa',cat:'dejeuner',lat:33.5920,lng:-7.6180,
+   desc:{fr:'Le marché emblématique de Casa. Poisson frais grillé sur place, fruits de mer, ambiance populaire et authentique.',en:'Casa\'s iconic market. Freshly grilled fish, seafood, popular and authentic atmosphere.',de:'Casas ikonischer Markt. Frisch gegrillter Fisch, Meeresfrüchte, authentische Atmosphäre.'},
+   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Marche+Central+Casablanca'},
+  {id:'rooftop',name:'Le Rooftop — Royal Mansour',city:'casa',cat:'rooftop',lat:33.5930,lng:-7.6200,
+   desc:{fr:'La vue la plus iconique sur Casablanca. Cocktails raffinés, coucher de soleil inoubliable.',en:'The most iconic view of Casablanca. Refined cocktails, unforgettable sunset.',de:'Der ikonischste Blick auf Casablanca. Raffinierte Cocktails, unvergesslicher Sonnenuntergang.'},
+   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Royal+Mansour+Casablanca'},
+  {id:'iloli',name:'Iloli',city:'casa',cat:'diner',lat:33.5850,lng:-7.6240,
+   desc:{fr:'Restaurant japonais haut de gamme à Gauthier. Sushi créatif, atmosphère épurée.',en:'Upscale Japanese restaurant in Gauthier. Creative sushi, sleek atmosphere.',de:'Gehobenes japanisches Restaurant in Gauthier. Kreatives Sushi, edle Atmosphäre.'},
+   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Iloli+Casablanca'},
+  {id:'7ciel',name:'7ème Ciel',city:'casa',cat:'diner',lat:33.5860,lng:-7.6350,
+   desc:{fr:'Vue panoramique depuis les hauteurs. Cuisine internationale dans un cadre spectaculaire.',en:'Panoramic view from the heights. International cuisine in a spectacular setting.',de:'Panoramablick von den Höhen. Internationale Küche in spektakulärem Rahmen.'},
+   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=7eme+Ciel+Casablanca'},
+  {id:'cabestan',name:'Le Cabestan',city:'casa',cat:'diner',lat:33.5930,lng:-7.6700,
+   desc:{fr:'Dîner face à l\'Atlantique au phare d\'El Hank. Fruits de mer, ambiance romantique.',en:'Dinner facing the Atlantic at El Hank lighthouse. Seafood, romantic atmosphere.',de:'Abendessen mit Blick auf den Atlantik am Leuchtturm El Hank. Meeresfrüchte, romantisch.'},
+   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Le+Cabestan+Casablanca'},
+  {id:'dardada',name:'Dar Dada',city:'casa',cat:'diner',lat:33.5890,lng:-7.6280,
+   desc:{fr:'Cuisine traditionnelle marocaine, décor somptueux et spectacle de musique andalouse en soirée.',en:'Traditional Moroccan cuisine, sumptuous decor and Andalusian music show in the evening.',de:'Traditionelle marokkanische Küche, prachtvolle Einrichtung und andalusische Musik am Abend.'},
+   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Dar+Dada+Casablanca'},
+  {id:'laola',name:'La Ola Rooftop',city:'casa',cat:'sortir',lat:33.5920,lng:-7.6700,
+   desc:{fr:'Rooftop en bord de mer à Aïn Diab. Ambiance latine, cocktails et musique festive.',en:'Seaside rooftop in Aïn Diab. Latin vibes, cocktails and festive music.',de:'Rooftop am Meer in Aïn Diab. Lateinamerikanische Stimmung, Cocktails und Partymusik.'},
+   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=La+Ola+Rooftop+Casablanca'},
+  {id:'bandidos',name:'Los Bandidos',city:'casa',cat:'sortir',lat:33.5800,lng:-7.6300,
+   desc:{fr:'Soirées latinos à Maarif. Ambiance festive, musique chaleureuse, réservation conseillée.',en:'Latino nights in Maarif. Festive atmosphere, warm music, reservation recommended.',de:'Latino-Abende in Maarif. Festliche Stimmung, warme Musik, Reservierung empfohlen.'},
+   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Los+Bandidos+Casablanca'},
+  {id:'hassanII',name:'Mosquée Hassan II',city:'casa',cat:'incontournables',lat:33.6086,lng:-7.6326,
+   desc:{fr:'L\'une des plus grandes mosquées du monde, sur l\'Atlantique. Visites guidées disponibles.',en:'One of the largest mosques in the world, on the Atlantic. Guided tours available.',de:'Eine der größten Moscheen der Welt, am Atlantik. Führungen verfügbar.'},
+   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Mosquee+Hassan+II+Casablanca'},
+  {id:'habous',name:'Quartier Habous',city:'casa',cat:'incontournables',lat:33.5730,lng:-7.6130,
+   desc:{fr:'La « nouvelle médina » des années 30. Ruelles authentiques, artisanat, pâtisseries et épices.',en:'The "new medina" from the 1930s. Authentic lanes, crafts, pastries and spices.',de:'Die „neue Medina" der 1930er. Authentische Gassen, Handwerk, Gebäck und Gewürze.'},
+   transport:'À pied / Taxi', maps:'https://maps.google.com/?q=Quartier+Habous+Casablanca'},
+  {id:'sacrecoeur',name:'Cathédrale du Sacré-Cœur',city:'casa',cat:'incontournables',lat:33.5890,lng:-7.6200,
+   desc:{fr:'Joyau architectural mêlant gothique et Art Déco (1930). Espace culturel et expositions.',en:'Architectural gem blending Gothic and Art Deco (1930). Cultural space and exhibitions.',de:'Architektonisches Juwel aus Gotik und Art Déco (1930). Kulturraum und Ausstellungen.'},
+   transport:'À pied / Taxi', maps:'https://maps.google.com/?q=Cathedrale+Sacre+Coeur+Casablanca'},
+  {id:'corniche',name:'Médina & Corniche Aïn Diab',city:'casa',cat:'incontournables',lat:33.5950,lng:-7.6650,
+   desc:{fr:'Flânerie dans l\'ancienne médina puis promenade le long du front de mer.',en:'Stroll through the old medina then walk along the seafront.',de:'Bummel durch die alte Medina, dann Spaziergang entlang der Küste.'},
+   transport:'À pied / Taxi', maps:'https://maps.google.com/?q=Corniche+Ain+Diab+Casablanca'},
+  // ── RABAT ──
+  {id:'tourhassan',name:'Mausolée Mohammed V & Tour Hassan',city:'rabat',cat:'histoire',lat:34.0247,lng:-6.8227,
+   desc:{fr:'Le cœur historique de Rabat. Architecture royale majestueuse, gardes en tenue d\'apparat.',en:'The historic heart of Rabat. Majestic royal architecture, ceremonial guards.',de:'Das historische Herz von Rabat. Majestätische königliche Architektur, Ehrenwachen.'},
+   transport:'Train + Taxi', maps:'https://maps.google.com/?q=Tour+Hassan+Rabat'},
+  {id:'oudayas',name:'Kasbah des Oudayas',city:'rabat',cat:'histoire',lat:34.0320,lng:-6.8360,
+   desc:{fr:'Kasbah médiévale aux ruelles bleues et blanches. Vue magnifique sur l\'Atlantique.',en:'Medieval kasbah with blue and white alleys. Magnificent Atlantic views.',de:'Mittelalterliche Kasbah mit blau-weißen Gassen. Herrlicher Atlantikblick.'},
+   transport:'Train + Taxi', maps:'https://maps.google.com/?q=Kasbah+Oudayas+Rabat'},
+  {id:'chellah',name:'Chellah',city:'rabat',cat:'histoire',lat:34.0100,lng:-6.8170,
+   desc:{fr:'Nécropole mérinide sur des ruines romaines. Jardins luxuriants, cigognes dans les minarets.',en:'Merinid necropolis on Roman ruins. Lush gardens, storks nesting in minarets.',de:'Merinidische Nekropole auf römischen Ruinen. Üppige Gärten, Störche in den Minaretten.'},
+   transport:'Train + Taxi', maps:'https://maps.google.com/?q=Chellah+Rabat'},
+  {id:'rabatmedina',name:'Médina de Rabat',city:'rabat',cat:'incontournables',lat:34.0280,lng:-6.8310,
+   desc:{fr:'Ruelles animées, souks colorés, artisanat marocain authentique. Moins touristique que Marrakech.',en:'Lively alleys, colorful souks, authentic Moroccan crafts. Less touristy than Marrakech.',de:'Lebhafte Gassen, farbenfrohe Souks, authentisches Handwerk. Weniger touristisch als Marrakesch.'},
+   transport:'Train + Taxi', maps:'https://maps.google.com/?q=Medina+Rabat'},
+  {id:'m6museum',name:'Musée Mohammed VI d\'Art Moderne',city:'rabat',cat:'incontournables',lat:34.0190,lng:-6.8350,
+   desc:{fr:'Le plus grand musée d\'art contemporain du Maroc. Collections permanentes et expositions temporaires.',en:'Morocco\'s largest contemporary art museum. Permanent collections and temporary exhibitions.',de:'Marokkos größtes Museum für zeitgenössische Kunst. Dauer- und Wechselausstellungen.'},
+   transport:'Train + Taxi', maps:'https://maps.google.com/?q=Musee+Mohammed+VI+Rabat'},
+  // ── TANGER ──
+  {id:'capspartel',name:'Cap Spartel',city:'tanger',cat:'incontournables',lat:35.7920,lng:-5.9200,
+   desc:{fr:'Là où l\'Atlantique rencontre la Méditerranée. Phare iconique, falaises spectaculaires.',en:'Where the Atlantic meets the Mediterranean. Iconic lighthouse, spectacular cliffs.',de:'Wo der Atlantik auf das Mittelmeer trifft. Ikonischer Leuchtturm, spektakuläre Klippen.'},
+   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Cap+Spartel+Tanger'},
+  {id:'hercule',name:'Grottes d\'Hercule',city:'tanger',cat:'incontournables',lat:35.7610,lng:-5.9380,
+   desc:{fr:'Grottes légendaires avec ouverture sur l\'océan en forme de carte d\'Afrique.',en:'Legendary caves with an ocean opening shaped like the map of Africa.',de:'Legendäre Höhlen mit einer Öffnung zum Meer in Form der Afrikakarte.'},
+   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Grottes+Hercule+Tanger'},
+  {id:'kasbahtanger',name:'Kasbah de Tanger',city:'tanger',cat:'histoire',lat:35.7880,lng:-5.8120,
+   desc:{fr:'Forteresse surplombant le détroit de Gibraltar. Musée, jardins et vue à couper le souffle.',en:'Fortress overlooking the Strait of Gibraltar. Museum, gardens and breathtaking views.',de:'Festung über der Straße von Gibraltar. Museum, Gärten und atemberaubender Ausblick.'},
+   transport:'À pied', maps:'https://maps.google.com/?q=Kasbah+Tanger'},
+  {id:'cafehafa',name:'Café Hafa',city:'tanger',cat:'rooftop',lat:35.7870,lng:-5.8200,
+   desc:{fr:'Café mythique depuis 1921. Terrasses en escalier face au détroit, thé à la menthe légendaire.',en:'Mythical café since 1921. Terraced seating facing the strait, legendary mint tea.',de:'Legendäres Café seit 1921. Terrassierte Sitzplätze mit Blick auf die Meerenge, legendärer Minztee.'},
+   transport:'À pied / Taxi', maps:'https://maps.google.com/?q=Cafe+Hafa+Tanger'},
+  {id:'medinatanger',name:'Médina de Tanger',city:'tanger',cat:'incontournables',lat:35.7860,lng:-5.8130,
+   desc:{fr:'Dédale de ruelles vivantes, Grand et Petit Socco, boutiques d\'artisanat, ambiance unique.',en:'Maze of lively lanes, Grand and Petit Socco, craft shops, unique atmosphere.',de:'Labyrinth lebhafter Gassen, Grand und Petit Socco, Handwerksläden, einzigartige Atmosphäre.'},
+   transport:'À pied', maps:'https://maps.google.com/?q=Medina+Tanger'},
+  {id:'terrasseparesseux',name:'Terrasse des Paresseux',city:'tanger',cat:'rooftop',lat:35.7860,lng:-5.8070,
+   desc:{fr:'Esplanade panoramique sur le port et la côte espagnole. Le spot photo de Tanger.',en:'Panoramic esplanade overlooking the port and Spanish coast. Tanger\'s best photo spot.',de:'Panorama-Esplanade mit Blick auf den Hafen und die spanische Küste. Tangers bester Fotospot.'},
+   transport:'À pied', maps:'https://maps.google.com/?q=Terrasse+des+Paresseux+Tanger'},
+];
+
+// Itineraries by duration
+const ITINERARIES = {
+  weekend: {
+    fr: [
+      {day:'Jour 1 — Casablanca',content:'Mosquée Hassan II (matinée, visite guidée) → Déjeuner au <strong>Marché Central</strong> (poisson frais grillé) → Quartier Habous (artisanat, thé) → Coucher de soleil depuis la <strong>Corniche Aïn Diab</strong> → Dîner chez <strong>Iloli</strong> ou <strong>7ème Ciel</strong>.'},
+      {day:'Jour 2 — Rabat',content:'Train ONCF depuis Casa-Voyageurs (1h) → <strong>Tour Hassan & Mausolée Mohammed V</strong> → <strong>Kasbah des Oudayas</strong> (déjeuner sur place) → <strong>Chellah</strong> (après-midi) → Retour en train.'}
+    ],
+    en: [
+      {day:'Day 1 — Casablanca',content:'Hassan II Mosque (morning, guided tour) → Lunch at <strong>Marché Central</strong> (fresh grilled fish) → Quartier Habous (crafts, tea) → Sunset at <strong>Corniche Aïn Diab</strong> → Dinner at <strong>Iloli</strong> or <strong>7ème Ciel</strong>.'},
+      {day:'Day 2 — Rabat',content:'ONCF train from Casa-Voyageurs (1h) → <strong>Tour Hassan & Mohammed V Mausoleum</strong> → <strong>Kasbah des Oudayas</strong> (lunch there) → <strong>Chellah</strong> (afternoon) → Return by train.'}
+    ],
+    de: [
+      {day:'Tag 1 — Casablanca',content:'Hassan-II-Moschee (Vormittag, Führung) → Mittagessen am <strong>Marché Central</strong> (frischer Grillfisch) → Quartier Habous (Handwerk, Tee) → Sonnenuntergang an der <strong>Corniche Aïn Diab</strong> → Abendessen bei <strong>Iloli</strong> oder <strong>7ème Ciel</strong>.'},
+      {day:'Tag 2 — Rabat',content:'ONCF-Zug ab Casa-Voyageurs (1 Std.) → <strong>Tour Hassan & Mausoleum Mohammed V.</strong> → <strong>Kasbah des Oudayas</strong> (Mittagessen vor Ort) → <strong>Chellah</strong> (Nachmittag) → Rückfahrt mit dem Zug.'}
+    ],
+    cities: ['casa','rabat']
+  },
+  week: {
+    fr: [
+      {day:'Jour 1 — Casablanca, les incontournables',content:'Mosquée Hassan II → <strong>Marché Central</strong> (poisson frais) → Quartier Habous → Cathédrale du Sacré-Cœur → Corniche Aïn Diab en fin de journée.'},
+      {day:'Jour 2 — Casablanca, gastro & détente',content:'Brunch chez <strong>La Sqala</strong> ou <strong>Holy Brunch</strong> → Médina & shopping → Verre au <strong>Rooftop Royal Mansour</strong> (coucher de soleil) → Dîner chez <strong>Le Cabestan</strong> ou <strong>Dar Dada</strong>.'},
+      {day:'Jour 3 — Rabat',content:'Train ONCF (1h) → Tour Hassan & Mausolée → Médina de Rabat → Déjeuner → <strong>Kasbah des Oudayas</strong> → <strong>Musée Mohammed VI</strong>.'},
+      {day:'Jour 4 — Rabat suite & retour',content:'<strong>Chellah</strong> (matinée) → Jardin d\'Essais → Retour Casa → Soirée à <strong>La Ola Rooftop</strong> ou <strong>Los Bandidos</strong>.'}
+    ],
+    en: [
+      {day:'Day 1 — Casablanca essentials',content:'Hassan II Mosque → <strong>Marché Central</strong> (fresh fish) → Quartier Habous → Cathédrale du Sacré-Cœur → Corniche Aïn Diab in the evening.'},
+      {day:'Day 2 — Casablanca, food & relax',content:'Brunch at <strong>La Sqala</strong> or <strong>Holy Brunch</strong> → Medina & shopping → Drinks at <strong>Rooftop Royal Mansour</strong> (sunset) → Dinner at <strong>Le Cabestan</strong> or <strong>Dar Dada</strong>.'},
+      {day:'Day 3 — Rabat',content:'ONCF train (1h) → Tour Hassan & Mausoleum → Rabat Medina → Lunch → <strong>Kasbah des Oudayas</strong> → <strong>Mohammed VI Museum</strong>.'},
+      {day:'Day 4 — Rabat continued & return',content:'<strong>Chellah</strong> (morning) → Jardin d\'Essais → Back to Casa → Evening at <strong>La Ola Rooftop</strong> or <strong>Los Bandidos</strong>.'}
+    ],
+    de: [
+      {day:'Tag 1 — Casablanca, die Highlights',content:'Hassan-II-Moschee → <strong>Marché Central</strong> (frischer Fisch) → Quartier Habous → Cathédrale du Sacré-Cœur → Corniche Aïn Diab am Abend.'},
+      {day:'Tag 2 — Casablanca, Genuss & Erholung',content:'Brunch bei <strong>La Sqala</strong> oder <strong>Holy Brunch</strong> → Medina & Shopping → Drink auf der <strong>Rooftop Royal Mansour</strong> (Sonnenuntergang) → Abendessen bei <strong>Le Cabestan</strong> oder <strong>Dar Dada</strong>.'},
+      {day:'Tag 3 — Rabat',content:'ONCF-Zug (1 Std.) → Tour Hassan & Mausoleum → Medina von Rabat → Mittagessen → <strong>Kasbah des Oudayas</strong> → <strong>Mohammed VI Museum</strong>.'},
+      {day:'Tag 4 — Rabat Fortsetzung & Rückkehr',content:'<strong>Chellah</strong> (Vormittag) → Jardin d\'Essais → Zurück nach Casa → Abend in der <strong>La Ola Rooftop</strong> oder <strong>Los Bandidos</strong>.'}
+    ],
+    cities: ['casa','rabat']
+  },
+  long: {
+    fr: [
+      {day:'Jour 1 — Casablanca, les incontournables',content:'Mosquée Hassan II → <strong>Marché Central</strong> (poisson frais) → Quartier Habous → Corniche Aïn Diab.'},
+      {day:'Jour 2 — Casablanca, gastro & détente',content:'Brunch <strong>La Sqala</strong> → Médina & shopping → <strong>Rooftop Royal Mansour</strong> → Dîner <strong>Dar Dada</strong>.'},
+      {day:'Jour 3 — Rabat',content:'Train ONCF (1h) → Tour Hassan → Médina → <strong>Kasbah des Oudayas</strong> → <strong>Musée Mohammed VI</strong>.'},
+      {day:'Jour 4 — Rabat & départ vers Tanger',content:'<strong>Chellah</strong> (matinée) → TGV Al Boraq vers Tanger (1h20 depuis Rabat) → Installation → Dîner dans la médina.'},
+      {day:'Jour 5 — Tanger',content:'<strong>Kasbah de Tanger</strong> → <strong>Terrasse des Paresseux</strong> → Médina, Grand Socco → Déjeuner → <strong>Café Hafa</strong> (thé face au détroit).'},
+      {day:'Jour 6 — Tanger, Cap Spartel & retour',content:'<strong>Cap Spartel</strong> (Atlantique × Méditerranée) → <strong>Grottes d\'Hercule</strong> → Plage → TGV retour vers Casa (2h15).'}
+    ],
+    en: [
+      {day:'Day 1 — Casablanca essentials',content:'Hassan II Mosque → <strong>Marché Central</strong> (fresh fish) → Quartier Habous → Corniche Aïn Diab.'},
+      {day:'Day 2 — Casablanca, food & relax',content:'Brunch at <strong>La Sqala</strong> → Medina & shopping → <strong>Rooftop Royal Mansour</strong> → Dinner at <strong>Dar Dada</strong>.'},
+      {day:'Day 3 — Rabat',content:'ONCF train (1h) → Tour Hassan → Medina → <strong>Kasbah des Oudayas</strong> → <strong>Mohammed VI Museum</strong>.'},
+      {day:'Day 4 — Rabat & departure to Tangier',content:'<strong>Chellah</strong> (morning) → Al Boraq TGV to Tangier (1h20 from Rabat) → Settle in → Dinner in the medina.'},
+      {day:'Day 5 — Tangier',content:'<strong>Tangier Kasbah</strong> → <strong>Terrasse des Paresseux</strong> → Medina, Grand Socco → Lunch → <strong>Café Hafa</strong> (tea facing the strait).'},
+      {day:'Day 6 — Tangier, Cap Spartel & return',content:'<strong>Cap Spartel</strong> (Atlantic × Mediterranean) → <strong>Hercules Caves</strong> → Beach → TGV back to Casa (2h15).'}
+    ],
+    de: [
+      {day:'Tag 1 — Casablanca, die Highlights',content:'Hassan-II-Moschee → <strong>Marché Central</strong> (frischer Fisch) → Quartier Habous → Corniche Aïn Diab.'},
+      {day:'Tag 2 — Casablanca, Genuss & Erholung',content:'Brunch bei <strong>La Sqala</strong> → Medina & Shopping → <strong>Rooftop Royal Mansour</strong> → Abendessen bei <strong>Dar Dada</strong>.'},
+      {day:'Tag 3 — Rabat',content:'ONCF-Zug (1 Std.) → Tour Hassan → Medina → <strong>Kasbah des Oudayas</strong> → <strong>Mohammed VI Museum</strong>.'},
+      {day:'Tag 4 — Rabat & Weiterreise nach Tanger',content:'<strong>Chellah</strong> (Vormittag) → Al Boraq TGV nach Tanger (1:20 ab Rabat) → Einchecken → Abendessen in der Medina.'},
+      {day:'Tag 5 — Tanger',content:'<strong>Kasbah von Tanger</strong> → <strong>Terrasse des Paresseux</strong> → Medina, Grand Socco → Mittagessen → <strong>Café Hafa</strong> (Tee mit Blick auf die Meerenge).'},
+      {day:'Tag 6 — Tanger, Cap Spartel & Rückkehr',content:'<strong>Cap Spartel</strong> (Atlantik × Mittelmeer) → <strong>Herkules-Höhlen</strong> → Strand → TGV zurück nach Casa (2:15).'}
+    ],
+    cities: ['casa','rabat','tanger']
+  }
+};
+
+const TRANSPORT_TIPS = {
+  weekend: {
+    fr: '🚂 <strong>Casa → Rabat :</strong> Train ONCF depuis la gare <strong>Casa-Voyageurs</strong> — environ 1h, départs fréquents, confortable et économique. À Rabat, arrivée à <strong>Rabat-Ville</strong>, la gare historique récemment rénovée.<br>🚗 Sur place : <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> et <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> fonctionnent aussi pour les trajets interurbains.',
+    en: '🚂 <strong>Casa → Rabat:</strong> ONCF train from <strong>Casa-Voyageurs</strong> station — about 1h, frequent departures, comfortable and affordable. In Rabat, arrive at <strong>Rabat-Ville</strong>, the recently renovated historic station.<br>🚗 Locally: <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> and <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> also work for intercity trips.',
+    de: '🚂 <strong>Casa → Rabat:</strong> ONCF-Zug ab <strong>Casa-Voyageurs</strong> — ca. 1 Std., häufige Abfahrten, komfortabel und günstig. In Rabat Ankunft an <strong>Rabat-Ville</strong>, dem kürzlich renovierten historischen Bahnhof.<br>🚗 Vor Ort: <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> und <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> funktionieren auch für Überlandfahrten.'
+  },
+  week: {
+    fr: '🚂 <strong>Casa → Rabat :</strong> Train ONCF depuis <strong>Casa-Voyageurs</strong> (1h, fréquent). Arrivée à <strong>Rabat-Ville</strong>, gare historique récemment rénovée.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> et <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> pour les trajets interurbains et locaux.',
+    en: '🚂 <strong>Casa → Rabat:</strong> ONCF train from <strong>Casa-Voyageurs</strong> (1h, frequent). Arrive at <strong>Rabat-Ville</strong>, recently renovated historic station.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> and <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> for intercity and local trips.',
+    de: '🚂 <strong>Casa → Rabat:</strong> ONCF-Zug ab <strong>Casa-Voyageurs</strong> (1 Std., häufig). Ankunft an <strong>Rabat-Ville</strong>, kürzlich renovierter historischer Bahnhof.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> und <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> für Überland- und Lokalfahrten.'
+  },
+  long: {
+    fr: '🚄 <strong>TGV Al Boraq :</strong> Le train à grande vitesse relie Casa à Tanger en <strong>2h15</strong> via Rabat (1h20 Rabat→Tanger). Départ depuis <strong>Casa-Voyageurs</strong>, arrêt à <strong>Rabat-Agdal</strong>, arrivée à <strong>Tanger-Ville</strong>. Réservez sur <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚂 <strong>Casa → Rabat :</strong> Train classique ONCF (1h, fréquent) depuis Casa-Voyageurs → Rabat-Ville.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> et <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> fonctionnent aussi en interurbain.',
+    en: '🚄 <strong>Al Boraq TGV:</strong> High-speed train connects Casa to Tangier in <strong>2h15</strong> via Rabat (1h20 Rabat→Tangier). Departs from <strong>Casa-Voyageurs</strong>, stops at <strong>Rabat-Agdal</strong>, arrives at <strong>Tanger-Ville</strong>. Book on <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚂 <strong>Casa → Rabat:</strong> Classic ONCF train (1h, frequent) from Casa-Voyageurs → Rabat-Ville.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> and <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> also work for intercity.',
+    de: '🚄 <strong>TGV Al Boraq:</strong> Der Hochgeschwindigkeitszug verbindet Casa mit Tanger in <strong>2:15 Std.</strong> über Rabat (1:20 Rabat→Tanger). Abfahrt ab <strong>Casa-Voyageurs</strong>, Halt in <strong>Rabat-Agdal</strong>, Ankunft in <strong>Tanger-Ville</strong>. Buchen auf <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚂 <strong>Casa → Rabat:</strong> Klassischer ONCF-Zug (1 Std., häufig) ab Casa-Voyageurs → Rabat-Ville.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> und <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> funktionieren auch für Überlandfahrten.'
+  }
+};
+
+// ══════════════════════════════════════════════
+// i18n TRANSLATIONS
+// ══════════════════════════════════════════════
+const T = {
+  fr: {
+    'nav.programme':'Programme','nav.infos':'Infos Pratiques','nav.hebergement':'Hébergement','nav.explorer':'Explorer','nav.liste':'Liste de Mariage',
+    'hero.location':'Casablanca, Maroc','hero.date':'28 Août 2025','hero.time':'À partir de 16h','hero.days':'Jours','hero.hours':'Heures',
+    'hero.family':'Les familles Atlassi et Belhaji sont heureuses de vous accueillir pour la célébration de l\'union sacrée de leurs enfants Oumaïma et Abdelhamid.',
+    'hero.discover':'Découvrir','hero.arrived':'Le grand jour est arrivé !',
+    'prog.label':'Déroulé de la Journée','prog.title':'Le Programme',
+    'prog.s1.name':'Accueil des invités','prog.s1.desc':'Arrivée à Dar Aïn Asserdoun, Bouskoura. Bienvenue, cocktail d\'accueil et installation.',
+    'prog.s2.name':'Début de la cérémonie','prog.s2.desc':'Petits fours et introduction musicale.',
+    'prog.s3.time':'18h00 — 01h00','prog.s3.name':'Célébration, Dîner & Festivités','prog.s3.desc':'Dîner festif, danse, musique et moments de bonheur partagés en famille et entre amis jusqu\'au bout de la nuit.',
+    'infos.label':'Tout ce qu\'il faut savoir','infos.title':'Infos Pratiques',
+    'infos.lieu.title':'Lieu','infos.dress.title':'Dress Code',
+    'infos.dress.desc':'Tenue élégante — caftan et robes sont les bienvenus. Prévoir un éventail et une petite laine : nous sommes en extérieur, il peut faire chaud comme froid.',
+    'infos.kids.title':'Enfants bienvenus','infos.kids.desc':'C\'est un mariage kif friendly ! Vos enfants sont les bienvenus avec plaisir.',
+    'infos.transport.title':'Se rendre au mariage','infos.airport.title':'Aéroport',
+    'infos.airport.desc':'Aéroport Mohammed V (CMN) — 30 min du lieu en voiture. À l\'arrivée, rendez-vous aux bornes taxi pour rejoindre votre hébergement.',
+    'infos.parking.title':'Parking','infos.parking.desc':'Un parking est disponible sur le lieu du mariage. Venez en voiture si vous le souhaitez !',
+    'heb.label':'Où dormir','heb.title':'Hébergement & Carte',
+    'heb.intro':'Deux profils s\'offrent à vous : rester proche du lieu pour un retour facile, ou séjourner en centre-ville pour profiter pleinement de Casablanca.',
+    'heb.nearby':'Proches du lieu · 15-25 min','heb.center':'Centre-ville · 30-40 min',
+    'heb.note':'Quartiers animés, idéaux pour profiter pleinement de Casablanca. Budget légèrement plus élevé.',
+    'exp.label':'Pour vos journées libres','exp.title':'Explorer la Région',
+    'exp.intro':'Profitez de votre séjour pour découvrir le Maroc. Sélectionnez la durée de votre séjour pour un programme adapté.',
+    'exp.dur.weekend':'Week-end (2 jours)','exp.dur.week':'Séjour (4-5 jours)','exp.dur.long':'Semaine complète',
+    'gift.label':'Vos idées cadeaux','gift.title':'Liste de Mariage',
+    'gift.intro':'Votre présence est notre plus beau cadeau. Si vous souhaitez néanmoins marquer cet heureux événement, voici ce qui nous toucherait particulièrement.',
+    'gift.honeymoon':'Voyage de Noces','gift.honeymoon.desc':'Si vous souhaitez contribuer à notre aventure et nous rapprocher de l\'île intense, chaque contribution sera accueillie avec beaucoup de gratitude.',
+    'gift.honeymoon.note':'Une enveloppe sera disponible le jour du mariage.',
+    'footer.love':'Fait avec amour',
+    'interlude1':'Entre tradition et modernité','interlude2':'Découvrez la magie du Maroc','interlude3':'De Casablanca à Tanger'
+  },
+  en: {
+    'nav.programme':'Schedule','nav.infos':'Practical Info','nav.hebergement':'Accommodation','nav.explorer':'Explore','nav.liste':'Gift Registry',
+    'hero.location':'Casablanca, Morocco','hero.date':'August 28, 2025','hero.time':'From 4:00 PM','hero.days':'Days','hero.hours':'Hours',
+    'hero.family':'The Atlassi and Belhaji families are delighted to welcome you to the celebration of the sacred union of their children Oumaïma and Abdelhamid.',
+    'hero.discover':'Discover','hero.arrived':'The big day is here!',
+    'prog.label':'Schedule of the Day','prog.title':'The Programme',
+    'prog.s1.name':'Guest Welcome','prog.s1.desc':'Arrival at Dar Aïn Asserdoun, Bouskoura. Welcome, reception cocktail and settling in.',
+    'prog.s2.name':'Ceremony begins','prog.s2.desc':'Petit fours and musical introduction.',
+    'prog.s3.time':'6:00 PM — 1:00 AM','prog.s3.name':'Celebration, Dinner & Festivities','prog.s3.desc':'Festive dinner, dancing, music and moments of shared happiness with family and friends into the night.',
+    'infos.label':'Everything you need to know','infos.title':'Practical Info',
+    'infos.lieu.title':'Venue','infos.dress.title':'Dress Code',
+    'infos.dress.desc':'Elegant attire — caftans and dresses are welcome. Bring a fan and a light wrap: we\'re outdoors, it can be warm or cool.',
+    'infos.kids.title':'Kids welcome','infos.kids.desc':'This is a family-friendly wedding! Your children are absolutely welcome.',
+    'infos.transport.title':'Getting there','infos.airport.title':'Airport',
+    'infos.airport.desc':'Mohammed V Airport (CMN) — 30 min from the venue by car. On arrival, head to the taxi stands to reach your accommodation.',
+    'infos.parking.title':'Parking','infos.parking.desc':'Parking is available at the wedding venue. Feel free to come by car!',
+    'heb.label':'Where to stay','heb.title':'Accommodation & Map',
+    'heb.intro':'Two options: stay close to the venue for an easy return, or stay downtown to fully enjoy Casablanca.',
+    'heb.nearby':'Near the venue · 15-25 min','heb.center':'City center · 30-40 min',
+    'heb.note':'Lively neighborhoods, perfect for fully enjoying Casablanca. Slightly higher budget.',
+    'exp.label':'For your free days','exp.title':'Explore the Region',
+    'exp.intro':'Make the most of your stay to discover Morocco. Select your stay duration for a tailored program.',
+    'exp.dur.weekend':'Weekend (2 days)','exp.dur.week':'Stay (4-5 days)','exp.dur.long':'Full week',
+    'gift.label':'Gift ideas','gift.title':'Gift Registry',
+    'gift.intro':'Your presence is our greatest gift. If you wish to mark this happy event, here\'s what would especially touch us.',
+    'gift.honeymoon':'Honeymoon','gift.honeymoon.desc':'If you wish to contribute to our adventure and bring us closer to this intense island, every contribution will be gratefully received.',
+    'gift.honeymoon.note':'An envelope will be available on the wedding day.',
+    'footer.love':'Made with love',
+    'interlude1':'Between tradition and modernity','interlude2':'Discover the magic of Morocco','interlude3':'From Casablanca to Tangier'
+  },
+  de: {
+    'nav.programme':'Programm','nav.infos':'Praktische Infos','nav.hebergement':'Unterkunft','nav.explorer':'Entdecken','nav.liste':'Hochzeitsliste',
+    'hero.location':'Casablanca, Marokko','hero.date':'28. August 2025','hero.time':'Ab 16:00 Uhr','hero.days':'Tage','hero.hours':'Stunden',
+    'hero.family':'Die Familien Atlassi und Belhaji freuen sich, Sie zur Feier der heiligen Verbindung ihrer Kinder Oumaïma und Abdelhamid willkommen zu heißen.',
+    'hero.discover':'Entdecken','hero.arrived':'Der große Tag ist da!',
+    'prog.label':'Tagesablauf','prog.title':'Das Programm',
+    'prog.s1.name':'Empfang der Gäste','prog.s1.desc':'Ankunft in Dar Aïn Asserdoun, Bouskoura. Willkommen, Empfangscocktail und Einrichtung.',
+    'prog.s2.name':'Beginn der Zeremonie','prog.s2.desc':'Petit Fours und musikalische Einführung.',
+    'prog.s3.time':'18:00 — 01:00 Uhr','prog.s3.name':'Feier, Abendessen & Festlichkeiten','prog.s3.desc':'Festliches Abendessen, Tanz, Musik und gemeinsame Glücksmomente mit Familie und Freunden bis tief in die Nacht.',
+    'infos.label':'Alles Wissenswerte','infos.title':'Praktische Infos',
+    'infos.lieu.title':'Ort','infos.dress.title':'Kleiderordnung',
+    'infos.dress.desc':'Elegante Kleidung — Kaftane und Kleider sind willkommen. Bringen Sie einen Fächer und eine leichte Jacke mit: Wir sind im Freien, es kann warm oder kühl werden.',
+    'infos.kids.title':'Kinder willkommen','infos.kids.desc':'Das ist eine familienfreundliche Hochzeit! Ihre Kinder sind herzlich willkommen.',
+    'infos.transport.title':'Anreise zur Hochzeit','infos.airport.title':'Flughafen',
+    'infos.airport.desc':'Flughafen Mohammed V (CMN) — 30 Min. vom Veranstaltungsort. Bei Ankunft zu den Taxiständen gehen, um Ihre Unterkunft zu erreichen.',
+    'infos.parking.title':'Parkplatz','infos.parking.desc':'Am Veranstaltungsort sind Parkplätze vorhanden. Kommen Sie gerne mit dem Auto!',
+    'heb.label':'Übernachten','heb.title':'Unterkunft & Karte',
+    'heb.intro':'Zwei Möglichkeiten: nahe am Veranstaltungsort für eine einfache Rückkehr oder in der Innenstadt, um Casablanca voll zu genießen.',
+    'heb.nearby':'In der Nähe · 15-25 Min.','heb.center':'Innenstadt · 30-40 Min.',
+    'heb.note':'Lebhafte Viertel, ideal um Casablanca voll zu genießen. Etwas höheres Budget.',
+    'exp.label':'Für Ihre freien Tage','exp.title':'Die Region entdecken',
+    'exp.intro':'Nutzen Sie Ihren Aufenthalt, um Marokko zu entdecken. Wählen Sie Ihre Aufenthaltsdauer für ein angepasstes Programm.',
+    'exp.dur.weekend':'Wochenende (2 Tage)','exp.dur.week':'Aufenthalt (4-5 Tage)','exp.dur.long':'Ganze Woche',
+    'gift.label':'Geschenkideen','gift.title':'Hochzeitsliste',
+    'gift.intro':'Ihre Anwesenheit ist unser schönstes Geschenk. Wenn Sie dieses freudige Ereignis dennoch würdigen möchten, hier was uns besonders berühren würde.',
+    'gift.honeymoon':'Hochzeitsreise','gift.honeymoon.desc':'Wenn Sie zu unserem Abenteuer beitragen und uns der intensiven Insel näherbringen möchten, wird jeder Beitrag mit großer Dankbarkeit aufgenommen.',
+    'gift.honeymoon.note':'Ein Umschlag wird am Hochzeitstag bereitliegen.',
+    'footer.love':'Mit Liebe gemacht',
+    'interlude1':'Zwischen Tradition und Moderne','interlude2':'Entdecken Sie die Magie Marokkos','interlude3':'Von Casablanca nach Tanger'
+  }
+};
+
+let currentLang = 'fr';
+let currentDur = 'weekend';
+const EXPLORER_MAP_URLS = {
+  weekend: 'https://maps.google.com/maps?q=Casablanca,Morocco&z=12&output=embed',
+  week: 'https://maps.google.com/maps?q=Rabat,Morocco&z=8&output=embed',
+  long: 'https://maps.google.com/maps?q=Morocco&ll=34.2,-6.8&z=7&output=embed'
+};
+
+// ══════════════════════════════════════════════
+// i18n ENGINE
+// ══════════════════════════════════════════════
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'de' ? 'de' : lang === 'en' ? 'en' : 'fr';
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (T[lang] && T[lang][key]) el.textContent = T[lang][key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.dataset.i18nHtml;
+    if (T[lang] && T[lang][key]) el.innerHTML = T[lang][key];
+  });
+  // Re-render dynamic sections
+  renderItinerary();
+  renderPlaces();
+  renderTransportTips();
+}
+
+// ══════════════════════════════════════════════
+// COUNTDOWN
+// ══════════════════════════════════════════════
+(function countdown() {
+  const wedding = new Date('2025-08-28T16:00:00+01:00');
+  function update() {
+    const diff = wedding - new Date();
+    if (diff <= 0) {
+      const msg = T[currentLang] && T[currentLang]['hero.arrived'] || 'Le grand jour est arrivé !';
+      document.getElementById('countdown').innerHTML = '<div style="font-family:Cormorant Garamond,serif;font-size:1.5rem;color:var(--gold-bright);font-style:italic;">' + msg + '</div>';
+      return;
+    }
+    document.getElementById('cd-days').textContent = Math.floor(diff / 86400000);
+    document.getElementById('cd-hours').textContent = Math.floor((diff % 86400000) / 3600000);
+    document.getElementById('cd-min').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+    document.getElementById('cd-sec').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+    requestAnimationFrame(update);
+  }
+  update();
+})();
+
+// ══════════════════════════════════════════════
+// REVEAL ON SCROLL
+// ══════════════════════════════════════════════
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ══════════════════════════════════════════════
+// NAV
+// ══════════════════════════════════════════════
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 80); }, { passive: true });
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  nav.querySelectorAll('a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+}, { passive: true });
+
+// ══════════════════════════════════════════════
+// LANGUAGE BUTTONS
+// ══════════════════════════════════════════════
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLang(btn.dataset.lang));
+});
+
+// ══════════════════════════════════════════════
+// EXPLORER MAP + ITINERARIES (Google Maps embeds)
+// ══════════════════════════════════════════════
+function updateExplorerMap() {
+  const iframe = document.getElementById('explorerMap');
+  if (iframe) iframe.src = EXPLORER_MAP_URLS[currentDur] || EXPLORER_MAP_URLS.weekend;
+}
+
+function renderItinerary() {
+  const it = ITINERARIES[currentDur];
+  const days = it[currentLang] || it.fr;
+  document.getElementById('itinerary').innerHTML = days.map(d =>
+    '<div class="itinerary-day"><div class="itinerary-day-title">' + d.day + '</div><div class="itinerary-day-content">' + d.content + '</div></div>'
+  ).join('');
+}
+
+function renderPlaces() {
+  const cities = ITINERARIES[currentDur].cities;
+  const filtered = PLACES.filter(p => cities.includes(p.city));
+
+  // Update Google Maps embed for current duration
+  updateExplorerMap();
+
+  // Render cards by city
+  const cityNames = { casa: { fr: 'Casablanca', en: 'Casablanca', de: 'Casablanca' }, rabat: { fr: 'Rabat', en: 'Rabat', de: 'Rabat' }, tanger: { fr: 'Tanger', en: 'Tangier', de: 'Tanger' } };
+  let html = '';
+  cities.forEach(city => {
+    const cityPlaces = filtered.filter(p => p.city === city);
+    const cityName = cityNames[city][currentLang] || cityNames[city].fr;
+    html += '<div class="cat-label">📍 ' + cityName + '</div>';
+    html += '<div class="explore-cards">';
+    cityPlaces.forEach(p => {
+      const desc = p.desc[currentLang] || p.desc.fr;
+      html += '<div class="explore-card" data-place-id="' + p.id + '">' +
+        '<h4>' + p.name + '</h4><p>' + desc + '</p>' +
+        '<div class="explore-card-footer">' +
+        '<span class="explore-badge">' + p.transport + '</span>' +
+        '<a href="' + p.maps + '" target="_blank" class="explore-link">Voir <span class="arrow">→</span></a>' +
+        '</div></div>';
+    });
+    html += '</div>';
+  });
+  document.getElementById('explorePlaces').innerHTML = html;
+
+}
+
+function renderTransportTips() {
+  const tips = TRANSPORT_TIPS[currentDur];
+  document.getElementById('transportTips').innerHTML = tips[currentLang] || tips.fr;
+}
+
+// Duration picker
+document.querySelectorAll('.dur-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.dur-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentDur = btn.dataset.dur;
+    renderItinerary();
+    renderPlaces();
+    renderTransportTips();
+  });
+});
+
+// Init explorer
+renderItinerary();
+renderPlaces();
+renderTransportTips();
+
+// ══════════════════════════════════════════════
+// IP GEOLOCATION — Hide gift section for Moroccan IPs
+// ══════════════════════════════════════════════
+(function checkIP() {
+  fetch('https://ipapi.co/json/')
+    .then(r => r.json())
+    .then(data => {
+      if (data.country_code === 'MA') {
+        const liste = document.getElementById('liste');
+        if (liste) liste.style.display = 'none';
+        // Also hide the wave transition before it
+        const waves = document.querySelectorAll('.wave-transition.teal-to-deep');
+        waves.forEach(w => w.style.display = 'none');
+        // Hide nav link
+        document.querySelectorAll('nav a[href="#liste"]').forEach(a => a.style.display = 'none');
+      }
+    })
+    .catch(() => {});
+})();
+</script>
+</body>
+</html>

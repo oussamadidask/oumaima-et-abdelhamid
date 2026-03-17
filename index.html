@@ -389,8 +389,8 @@ footer{background:var(--teal-deep);padding:3.5rem 2rem;text-align:center;border-
     <h2 class="section-title dark reveal reveal-delay-1" data-i18n="prog.title">Le Programme</h2>
     <div class="section-rule terracotta reveal reveal-delay-2"></div>
     <div class="programme-grid" id="programmeGrid">
-      <div class="prog-step reveal"><div class="step-icon">🥂</div><div class="step-time">16h00</div><div class="step-name" data-i18n="prog.s1.name">Accueil des invités</div><div class="step-desc" data-i18n="prog.s1.desc">Arrivée à Dar Aïn Asserdoun, Bouskoura. Bienvenue, cocktail d'accueil et installation.</div></div>
-      <div class="prog-step reveal reveal-delay-1"><div class="step-icon">✨</div><div class="step-time">17h00</div><div class="step-name" data-i18n="prog.s2.name">Début de la cérémonie</div><div class="step-desc" data-i18n="prog.s2.desc">Petits fours et introduction musicale.</div></div>
+      <div class="prog-step reveal"><div class="step-icon">🥂</div><div class="step-time" data-i18n="prog.s1.time">16h00</div><div class="step-name" data-i18n="prog.s1.name">Accueil des invités</div><div class="step-desc" data-i18n="prog.s1.desc">Arrivée à Dar Aïn Asserdoun, Bouskoura. Bienvenue, cocktail d'accueil et installation.</div></div>
+      <div class="prog-step reveal reveal-delay-1"><div class="step-icon">✨</div><div class="step-time" data-i18n="prog.s2.time">17h00</div><div class="step-name" data-i18n="prog.s2.name">Début de la cérémonie</div><div class="step-desc" data-i18n="prog.s2.desc">Petits fours et introduction musicale.</div></div>
       <div class="prog-step reveal reveal-delay-2"><div class="step-icon">🎶</div><div class="step-time" data-i18n="prog.s3.time">18h00 — 01h00</div><div class="step-name" data-i18n="prog.s3.name">Célébration, Dîner & Festivités</div><div class="step-desc" data-i18n="prog.s3.desc">Dîner festif, danse, musique et moments de bonheur partagés en famille et entre amis jusqu'au bout de la nuit.</div></div>
     </div>
   </div>
@@ -461,6 +461,7 @@ footer{background:var(--teal-deep);padding:3.5rem 2rem;text-align:center;border-
         <button onclick="mapZoom('venueMap',-1)" title="Zoom out">−</button>
       </div>
     </div>
+    <p class="quartier-note reveal" style="text-align:center;margin-bottom:1.5rem;font-size:.8rem;color:var(--terracotta);" data-i18n="heb.clickhint">Cliquez sur un quartier pour le situer sur la carte</p>
     <div class="hebergement-cols reveal">
       <div class="hebergement-col">
         <h3><span class="hdot" style="background:#4CAF50"></span> <span data-i18n="heb.nearby">Proches du lieu · 15-25 min</span></h3>
@@ -557,7 +558,7 @@ footer{background:var(--teal-deep);padding:3.5rem 2rem;text-align:center;border-
 <footer>
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-bottom:1.5rem"><polygon points="16,0 18.5,13 32,16 18.5,19 16,32 13.5,19 0,16 13.5,13" fill="rgba(226,183,83,0.2)"/></svg>
   <div class="footer-names">Oumaïma &amp; Abdelhamid</div>
-  <div class="footer-details">28 Août 2025 · Dar Aïn Asserdoun · Bouskoura, Casablanca</div>
+  <div class="footer-details" data-i18n="footer.details">28 Août 2025 · Dar Aïn Asserdoun · Bouskoura, Casablanca</div>
   <div class="footer-heart" data-i18n="footer.love">Fait avec amour</div>
 </footer>
 
@@ -765,16 +766,22 @@ const T = {
     'prog.s2.name':'Début de la cérémonie','prog.s2.desc':'Petits fours et introduction musicale.',
     'prog.s3.time':'18h00 — 01h00','prog.s3.name':'Célébration, Dîner & Festivités','prog.s3.desc':'Dîner festif, danse, musique et moments de bonheur partagés en famille et entre amis jusqu\'au bout de la nuit.',
     'infos.label':'Tout ce qu\'il faut savoir','infos.title':'Infos Pratiques',
-    'infos.lieu.title':'Lieu','infos.dress.title':'Dress Code',
+    'infos.lieu.title':'Lieu','infos.lieu.desc':'Dar Aïn Asserdoun, Bouskoura — à 20 min du centre de Casablanca. <a href="https://maps.app.goo.gl/xvsgP3aBGiTaRvVF6" target="_blank">Voir sur Google Maps</a>',
+    'infos.dress.title':'Dress Code',
     'infos.dress.desc':'Tenue élégante — caftan et robes sont les bienvenus. Prévoir un éventail et une petite laine : nous sommes en extérieur, il peut faire chaud comme froid.',
     'infos.kids.title':'Enfants bienvenus','infos.kids.desc':'C\'est un mariage kif friendly ! Vos enfants sont les bienvenus avec plaisir.',
-    'infos.transport.title':'Se rendre au mariage','infos.airport.title':'Aéroport',
+    'infos.transport.title':'Se rendre au mariage',
+    'infos.transport.desc':'Utilisez <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> ou <a href="https://indrive.com" target="_blank">InDrive</a> pour venir. Un parking est disponible sur place. Pour le retour, des chauffeurs seront disponibles avec tarif préférentiel.',
+    'infos.airport.title':'Aéroport',
     'infos.airport.desc':'Aéroport Mohammed V (CMN) — 30 min du lieu en voiture. À l\'arrivée, rendez-vous aux bornes taxi pour rejoindre votre hébergement.',
     'infos.parking.title':'Parking','infos.parking.desc':'Un parking est disponible sur le lieu du mariage. Venez en voiture si vous le souhaitez !',
+    'prog.s1.time':'16h00','prog.s2.time':'17h00',
     'heb.label':'Où dormir','heb.title':'Hébergement & Carte',
     'heb.intro':'Deux profils s\'offrent à vous : rester proche du lieu pour un retour facile, ou séjourner en centre-ville pour profiter pleinement de Casablanca.',
     'heb.nearby':'Proches du lieu · 15-25 min','heb.center':'Centre-ville · 30-40 min',
     'heb.note':'Quartiers animés, idéaux pour profiter pleinement de Casablanca. Budget légèrement plus élevé.',
+    'heb.clickhint':'Cliquez sur un quartier pour le situer sur la carte',
+    'footer.details':'28 Août 2025 · Dar Aïn Asserdoun · Bouskoura, Casablanca',
     'exp.label':'Pour vos journées libres','exp.title':'Explorer la Région',
     'exp.intro':'Profitez de votre séjour pour découvrir le Maroc. Sélectionnez la durée de votre séjour pour un programme adapté.',
     'exp.dur.weekend':'Week-end (2 jours)','exp.dur.week':'Séjour (4-5 jours)','exp.dur.long':'Semaine complète',
@@ -795,16 +802,22 @@ const T = {
     'prog.s2.name':'Ceremony begins','prog.s2.desc':'Petit fours and musical introduction.',
     'prog.s3.time':'6:00 PM — 1:00 AM','prog.s3.name':'Celebration, Dinner & Festivities','prog.s3.desc':'Festive dinner, dancing, music and moments of shared happiness with family and friends into the night.',
     'infos.label':'Everything you need to know','infos.title':'Practical Info',
-    'infos.lieu.title':'Venue','infos.dress.title':'Dress Code',
+    'infos.lieu.title':'Venue','infos.lieu.desc':'Dar Aïn Asserdoun, Bouskoura — 20 min from Casablanca city center. <a href="https://maps.app.goo.gl/xvsgP3aBGiTaRvVF6" target="_blank">View on Google Maps</a>',
+    'infos.dress.title':'Dress Code',
     'infos.dress.desc':'Elegant attire — caftans and dresses are welcome. Bring a fan and a light wrap: we\'re outdoors, it can be warm or cool.',
     'infos.kids.title':'Kids welcome','infos.kids.desc':'This is a family-friendly wedding! Your children are absolutely welcome.',
-    'infos.transport.title':'Getting there','infos.airport.title':'Airport',
+    'infos.transport.title':'Getting there',
+    'infos.transport.desc':'Use <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> or <a href="https://indrive.com" target="_blank">InDrive</a> to get there. Parking is available on site. For the return, drivers will be available at a preferential rate.',
+    'infos.airport.title':'Airport',
     'infos.airport.desc':'Mohammed V Airport (CMN) — 30 min from the venue by car. On arrival, head to the taxi stands to reach your accommodation.',
     'infos.parking.title':'Parking','infos.parking.desc':'Parking is available at the wedding venue. Feel free to come by car!',
+    'prog.s1.time':'4:00 PM','prog.s2.time':'5:00 PM',
     'heb.label':'Where to stay','heb.title':'Accommodation & Map',
     'heb.intro':'Two options: stay close to the venue for an easy return, or stay downtown to fully enjoy Casablanca.',
     'heb.nearby':'Near the venue · 15-25 min','heb.center':'City center · 30-40 min',
     'heb.note':'Lively neighborhoods, perfect for fully enjoying Casablanca. Slightly higher budget.',
+    'heb.clickhint':'Click a neighborhood to locate it on the map',
+    'footer.details':'August 28, 2025 · Dar Aïn Asserdoun · Bouskoura, Casablanca',
     'exp.label':'For your free days','exp.title':'Explore the Region',
     'exp.intro':'Make the most of your stay to discover Morocco. Select your stay duration for a tailored program.',
     'exp.dur.weekend':'Weekend (2 days)','exp.dur.week':'Stay (4-5 days)','exp.dur.long':'Full week',
@@ -825,16 +838,22 @@ const T = {
     'prog.s2.name':'Beginn der Zeremonie','prog.s2.desc':'Petit Fours und musikalische Einführung.',
     'prog.s3.time':'18:00 — 01:00 Uhr','prog.s3.name':'Feier, Abendessen & Festlichkeiten','prog.s3.desc':'Festliches Abendessen, Tanz, Musik und gemeinsame Glücksmomente mit Familie und Freunden bis tief in die Nacht.',
     'infos.label':'Alles Wissenswerte','infos.title':'Praktische Infos',
-    'infos.lieu.title':'Ort','infos.dress.title':'Kleiderordnung',
+    'infos.lieu.title':'Ort','infos.lieu.desc':'Dar Aïn Asserdoun, Bouskoura — 20 Min. vom Zentrum Casablancas. <a href="https://maps.app.goo.gl/xvsgP3aBGiTaRvVF6" target="_blank">Auf Google Maps ansehen</a>',
+    'infos.dress.title':'Kleiderordnung',
     'infos.dress.desc':'Elegante Kleidung — Kaftane und Kleider sind willkommen. Bringen Sie einen Fächer und eine leichte Jacke mit: Wir sind im Freien, es kann warm oder kühl werden.',
     'infos.kids.title':'Kinder willkommen','infos.kids.desc':'Das ist eine familienfreundliche Hochzeit! Ihre Kinder sind herzlich willkommen.',
-    'infos.transport.title':'Anreise zur Hochzeit','infos.airport.title':'Flughafen',
+    'infos.transport.title':'Anreise zur Hochzeit',
+    'infos.transport.desc':'Nutzen Sie <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> oder <a href="https://indrive.com" target="_blank">InDrive</a> für die Anfahrt. Parkplätze sind vor Ort vorhanden. Für die Rückfahrt stehen Fahrer zu Vorzugstarifen bereit.',
+    'infos.airport.title':'Flughafen',
     'infos.airport.desc':'Flughafen Mohammed V (CMN) — 30 Min. vom Veranstaltungsort. Bei Ankunft zu den Taxiständen gehen, um Ihre Unterkunft zu erreichen.',
     'infos.parking.title':'Parkplatz','infos.parking.desc':'Am Veranstaltungsort sind Parkplätze vorhanden. Kommen Sie gerne mit dem Auto!',
+    'prog.s1.time':'16:00 Uhr','prog.s2.time':'17:00 Uhr',
     'heb.label':'Übernachten','heb.title':'Unterkunft & Karte',
     'heb.intro':'Zwei Möglichkeiten: nahe am Veranstaltungsort für eine einfache Rückkehr oder in der Innenstadt, um Casablanca voll zu genießen.',
     'heb.nearby':'In der Nähe · 15-25 Min.','heb.center':'Innenstadt · 30-40 Min.',
     'heb.note':'Lebhafte Viertel, ideal um Casablanca voll zu genießen. Etwas höheres Budget.',
+    'heb.clickhint':'Klicken Sie auf ein Viertel, um es auf der Karte zu finden',
+    'footer.details':'28. August 2025 · Dar Aïn Asserdoun · Bouskoura, Casablanca',
     'exp.label':'Für Ihre freien Tage','exp.title':'Die Region entdecken',
     'exp.intro':'Nutzen Sie Ihren Aufenthalt, um Marokko zu entdecken. Wählen Sie Ihre Aufenthaltsdauer für ein angepasstes Programm.',
     'exp.dur.weekend':'Wochenende (2 Tage)','exp.dur.week':'Aufenthalt (4-5 Tage)','exp.dur.long':'Ganze Woche',
@@ -1032,8 +1051,13 @@ function mapZoom(mapId, delta) {
 function openMapModal(name, lat, lng, mapsUrl) {
   const overlay = document.querySelector('.map-modal-overlay');
   document.getElementById('mapModalTitle').textContent = name;
-  document.getElementById('mapModalIframe').src = 'https://maps.google.com/maps?q=' + lat + ',' + lng + '&z=16&hl=' + currentLang + '&output=embed';
+  // Use place name for better Google Maps recognition (avoids "Place info couldn't load")
+  const query = encodeURIComponent(name);
+  document.getElementById('mapModalIframe').src = 'https://maps.google.com/maps?q=' + query + '&z=16&hl=' + currentLang + '&output=embed';
   document.getElementById('mapModalLink').href = mapsUrl;
+  // Translate modal footer link
+  const linkLabel = {fr:'Ouvrir dans Google Maps →',en:'Open in Google Maps →',de:'In Google Maps öffnen →'}[currentLang] || 'Ouvrir dans Google Maps →';
+  document.getElementById('mapModalLink').textContent = linkLabel;
   overlay.classList.add('active');
   document.body.style.overflow = 'hidden';
 }

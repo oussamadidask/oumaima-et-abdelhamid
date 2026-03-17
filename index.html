@@ -239,6 +239,28 @@ footer{background:var(--teal-deep);padding:3.5rem 2rem;text-align:center;border-
 
 /* Google Maps embed */
 .gmap-embed{width:100%;border:0;border-radius:12px;display:block}
+.map-container{position:relative;margin-bottom:1.5rem}
+.map-zoom{position:absolute;right:12px;bottom:12px;display:flex;flex-direction:column;gap:4px;z-index:10}
+.map-zoom button{width:36px;height:36px;border:none;border-radius:8px;background:rgba(255,255,255,0.92);color:#333;font-size:1.2rem;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.map-zoom button:hover{background:#fff;transform:scale(1.08)}
+
+/* Map place modal */
+.map-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.map-modal-overlay.active{opacity:1;pointer-events:all}
+.map-modal{background:#fff;border-radius:16px;width:90%;max-width:700px;max-height:85vh;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3);transform:scale(0.9);transition:transform .3s}
+.map-modal-overlay.active .map-modal{transform:scale(1)}
+.map-modal-header{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid #eee}
+.map-modal-header h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#1a1a1a;margin:0}
+.map-modal-close{width:32px;height:32px;border:none;background:none;font-size:1.4rem;cursor:pointer;color:#666;border-radius:6px;display:flex;align-items:center;justify-content:center}
+.map-modal-close:hover{background:#f0f0f0}
+.map-modal iframe{width:100%;height:450px;border:0}
+.map-modal-footer{padding:.75rem 1.25rem;border-top:1px solid #eee;text-align:right}
+.map-modal-footer a{color:var(--terracotta);font-size:.85rem;text-decoration:none;font-weight:500}
+
+/* Clickable place items */
+.hebergement-col li.clickable{cursor:pointer;transition:all .2s;padding-left:.75rem;border-radius:6px}
+.hebergement-col li.clickable:hover{background:rgba(193,122,80,0.08);color:var(--terracotta)}
+.explore-card.clickable{cursor:pointer}
 
 /* ══ RESPONSIVE ══ */
 @media(max-width:768px){
@@ -407,7 +429,7 @@ footer{background:var(--teal-deep);padding:3.5rem 2rem;text-align:center;border-
       <div class="info-card reveal">
         <div class="info-icon">🚗</div>
         <h3 data-i18n="infos.transport.title">Se rendre au mariage</h3>
-        <p data-i18n-html="infos.transport.desc">Utilisez <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> ou <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> pour venir. Un parking est disponible sur place. Pour le retour, des chauffeurs seront disponibles avec tarif préférentiel.</p>
+        <p data-i18n-html="infos.transport.desc">Utilisez <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> ou <a href="https://indrive.com" target="_blank">InDrive</a> pour venir. Un parking est disponible sur place. Pour le retour, des chauffeurs seront disponibles avec tarif préférentiel.</p>
       </div>
       <div class="info-card reveal reveal-delay-1">
         <div class="info-icon">🛬</div>
@@ -431,8 +453,14 @@ footer{background:var(--teal-deep);padding:3.5rem 2rem;text-align:center;border-
     <h2 class="section-title dark reveal reveal-delay-1" data-i18n="heb.title">Hébergement &amp; Carte</h2>
     <div class="section-rule terracotta reveal reveal-delay-2"></div>
     <p class="section-intro muted reveal" data-i18n="heb.intro">Deux profils s'offrent à vous : rester proche du lieu pour un retour facile, ou séjourner en centre-ville pour profiter pleinement de Casablanca.</p>
-    <iframe id="venueMap" class="gmap-embed reveal" height="400" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
-      src="https://maps.google.com/maps?q=Dar+Ain+Asserdoun+Bouskoura+Casablanca&z=12&output=embed"></iframe>
+    <div class="map-container reveal">
+      <iframe id="venueMap" class="gmap-embed" height="400" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Dar+Ain+Asserdoun+Bouskoura+Casablanca&z=12&hl=fr&output=embed"></iframe>
+      <div class="map-zoom">
+        <button onclick="mapZoom('venueMap',1)" title="Zoom in">+</button>
+        <button onclick="mapZoom('venueMap',-1)" title="Zoom out">−</button>
+      </div>
+    </div>
     <div class="hebergement-cols reveal">
       <div class="hebergement-col">
         <h3><span class="hdot" style="background:#4CAF50"></span> <span data-i18n="heb.nearby">Proches du lieu · 15-25 min</span></h3>
@@ -482,8 +510,14 @@ footer{background:var(--teal-deep);padding:3.5rem 2rem;text-align:center;border-
     <div class="itinerary reveal" id="itinerary"></div>
 
     <!-- Explorer map -->
-    <iframe id="explorerMap" class="gmap-embed reveal" height="350" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
-      src="https://maps.google.com/maps?q=Casablanca,Morocco&z=12&output=embed"></iframe>
+    <div class="map-container reveal">
+      <iframe id="explorerMap" class="gmap-embed" height="350" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Casablanca,Morocco&z=12&hl=fr&output=embed"></iframe>
+      <div class="map-zoom">
+        <button onclick="mapZoom('explorerMap',1)" title="Zoom in">+</button>
+        <button onclick="mapZoom('explorerMap',-1)" title="Zoom out">−</button>
+      </div>
+    </div>
 
     <!-- Place cards rendered by JS -->
     <div id="explorePlaces"></div>
@@ -701,19 +735,19 @@ const ITINERARIES = {
 
 const TRANSPORT_TIPS = {
   weekend: {
-    fr: '🚂 <strong>Casa → Rabat :</strong> Train ONCF depuis la gare <strong>Casa-Voyageurs</strong> — environ 1h, départs fréquents, confortable et économique. À Rabat, arrivée à <strong>Rabat-Ville</strong>, la gare historique récemment rénovée.<br>🚗 Sur place : <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> et <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> fonctionnent aussi pour les trajets interurbains.',
-    en: '🚂 <strong>Casa → Rabat:</strong> ONCF train from <strong>Casa-Voyageurs</strong> station — about 1h, frequent departures, comfortable and affordable. In Rabat, arrive at <strong>Rabat-Ville</strong>, the recently renovated historic station.<br>🚗 Locally: <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> and <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> also work for intercity trips.',
-    de: '🚂 <strong>Casa → Rabat:</strong> ONCF-Zug ab <strong>Casa-Voyageurs</strong> — ca. 1 Std., häufige Abfahrten, komfortabel und günstig. In Rabat Ankunft an <strong>Rabat-Ville</strong>, dem kürzlich renovierten historischen Bahnhof.<br>🚗 Vor Ort: <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> und <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> funktionieren auch für Überlandfahrten.'
+    fr: '🚂 <strong>Casa → Rabat :</strong> Train ONCF depuis la gare <strong>Casa-Voyageurs</strong> — environ 1h, départs fréquents, confortable et économique. À Rabat, arrivée à <strong>Rabat-Ville</strong>, la gare historique récemment rénovée.<br>🚗 Sur place : <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> et <a href="https://indrive.com" target="_blank">InDrive</a> fonctionnent aussi pour les trajets interurbains.',
+    en: '🚂 <strong>Casa → Rabat:</strong> ONCF train from <strong>Casa-Voyageurs</strong> station — about 1h, frequent departures, comfortable and affordable. In Rabat, arrive at <strong>Rabat-Ville</strong>, the recently renovated historic station.<br>🚗 Locally: <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> and <a href="https://indrive.com" target="_blank">InDrive</a> also work for intercity trips.',
+    de: '🚂 <strong>Casa → Rabat:</strong> ONCF-Zug ab <strong>Casa-Voyageurs</strong> — ca. 1 Std., häufige Abfahrten, komfortabel und günstig. In Rabat Ankunft an <strong>Rabat-Ville</strong>, dem kürzlich renovierten historischen Bahnhof.<br>🚗 Vor Ort: <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> und <a href="https://indrive.com" target="_blank">InDrive</a> funktionieren auch für Überlandfahrten.'
   },
   week: {
-    fr: '🚂 <strong>Casa → Rabat :</strong> Train ONCF depuis <strong>Casa-Voyageurs</strong> (1h, fréquent). Arrivée à <strong>Rabat-Ville</strong>, gare historique récemment rénovée.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> et <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> pour les trajets interurbains et locaux.',
-    en: '🚂 <strong>Casa → Rabat:</strong> ONCF train from <strong>Casa-Voyageurs</strong> (1h, frequent). Arrive at <strong>Rabat-Ville</strong>, recently renovated historic station.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> and <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> for intercity and local trips.',
-    de: '🚂 <strong>Casa → Rabat:</strong> ONCF-Zug ab <strong>Casa-Voyageurs</strong> (1 Std., häufig). Ankunft an <strong>Rabat-Ville</strong>, kürzlich renovierter historischer Bahnhof.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> und <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> für Überland- und Lokalfahrten.'
+    fr: '🚂 <strong>Casa → Rabat :</strong> Train ONCF depuis <strong>Casa-Voyageurs</strong> (1h, fréquent). Arrivée à <strong>Rabat-Ville</strong>, gare historique récemment rénovée.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> et <a href="https://indrive.com" target="_blank">InDrive</a> pour les trajets interurbains et locaux.',
+    en: '🚂 <strong>Casa → Rabat:</strong> ONCF train from <strong>Casa-Voyageurs</strong> (1h, frequent). Arrive at <strong>Rabat-Ville</strong>, recently renovated historic station.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> and <a href="https://indrive.com" target="_blank">InDrive</a> for intercity and local trips.',
+    de: '🚂 <strong>Casa → Rabat:</strong> ONCF-Zug ab <strong>Casa-Voyageurs</strong> (1 Std., häufig). Ankunft an <strong>Rabat-Ville</strong>, kürzlich renovierter historischer Bahnhof.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> und <a href="https://indrive.com" target="_blank">InDrive</a> für Überland- und Lokalfahrten.'
   },
   long: {
-    fr: '🚄 <strong>TGV Al Boraq :</strong> Le train à grande vitesse relie Casa à Tanger en <strong>2h15</strong> via Rabat (1h20 Rabat→Tanger). Départ depuis <strong>Casa-Voyageurs</strong>, arrêt à <strong>Rabat-Agdal</strong>, arrivée à <strong>Tanger-Ville</strong>. Réservez sur <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚂 <strong>Casa → Rabat :</strong> Train classique ONCF (1h, fréquent) depuis Casa-Voyageurs → Rabat-Ville.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> et <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> fonctionnent aussi en interurbain.',
-    en: '🚄 <strong>Al Boraq TGV:</strong> High-speed train connects Casa to Tangier in <strong>2h15</strong> via Rabat (1h20 Rabat→Tangier). Departs from <strong>Casa-Voyageurs</strong>, stops at <strong>Rabat-Agdal</strong>, arrives at <strong>Tanger-Ville</strong>. Book on <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚂 <strong>Casa → Rabat:</strong> Classic ONCF train (1h, frequent) from Casa-Voyageurs → Rabat-Ville.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> and <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> also work for intercity.',
-    de: '🚄 <strong>TGV Al Boraq:</strong> Der Hochgeschwindigkeitszug verbindet Casa mit Tanger in <strong>2:15 Std.</strong> über Rabat (1:20 Rabat→Tanger). Abfahrt ab <strong>Casa-Voyageurs</strong>, Halt in <strong>Rabat-Agdal</strong>, Ankunft in <strong>Tanger-Ville</strong>. Buchen auf <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚂 <strong>Casa → Rabat:</strong> Klassischer ONCF-Zug (1 Std., häufig) ab Casa-Voyageurs → Rabat-Ville.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> und <a href="https://play.google.com/store/apps/details?id=com.indrive.passenger" target="_blank">InDrive</a> funktionieren auch für Überlandfahrten.'
+    fr: '🚄 <strong>TGV Al Boraq :</strong> Le train à grande vitesse relie Casa à Tanger en <strong>2h15</strong> via Rabat (1h20 Rabat→Tanger). Départ depuis <strong>Casa-Voyageurs</strong>, arrêt à <strong>Rabat-Agdal</strong>, arrivée à <strong>Tanger-Ville</strong>. Réservez sur <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚂 <strong>Casa → Rabat :</strong> Train classique ONCF (1h, fréquent) depuis Casa-Voyageurs → Rabat-Ville.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> et <a href="https://indrive.com" target="_blank">InDrive</a> fonctionnent aussi en interurbain.',
+    en: '🚄 <strong>Al Boraq TGV:</strong> High-speed train connects Casa to Tangier in <strong>2h15</strong> via Rabat (1h20 Rabat→Tangier). Departs from <strong>Casa-Voyageurs</strong>, stops at <strong>Rabat-Agdal</strong>, arrives at <strong>Tanger-Ville</strong>. Book on <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚂 <strong>Casa → Rabat:</strong> Classic ONCF train (1h, frequent) from Casa-Voyageurs → Rabat-Ville.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> and <a href="https://indrive.com" target="_blank">InDrive</a> also work for intercity.',
+    de: '🚄 <strong>TGV Al Boraq:</strong> Der Hochgeschwindigkeitszug verbindet Casa mit Tanger in <strong>2:15 Std.</strong> über Rabat (1:20 Rabat→Tanger). Abfahrt ab <strong>Casa-Voyageurs</strong>, Halt in <strong>Rabat-Agdal</strong>, Ankunft in <strong>Tanger-Ville</strong>. Buchen auf <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚂 <strong>Casa → Rabat:</strong> Klassischer ONCF-Zug (1 Std., häufig) ab Casa-Voyageurs → Rabat-Ville.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> und <a href="https://indrive.com" target="_blank">InDrive</a> funktionieren auch für Überlandfahrten.'
   }
 };
 
@@ -815,11 +849,14 @@ const T = {
 
 let currentLang = 'fr';
 let currentDur = 'weekend';
-const EXPLORER_MAP_URLS = {
-  weekend: 'https://maps.google.com/maps?q=Casablanca,Morocco&z=12&output=embed',
-  week: 'https://maps.google.com/maps?q=Rabat,Morocco&z=8&output=embed',
-  long: 'https://maps.google.com/maps?q=Morocco&ll=34.2,-6.8&z=7&output=embed'
-};
+function getExplorerMapUrl(dur) {
+  const base = {
+    weekend: 'https://maps.google.com/maps?q=Casablanca,Morocco&z=12',
+    week: 'https://maps.google.com/maps?q=Rabat,Morocco&z=8',
+    long: 'https://maps.google.com/maps?q=Morocco&ll=34.2,-6.8&z=7'
+  };
+  return (base[dur] || base.weekend) + '&hl=' + currentLang + '&output=embed';
+}
 
 // ══════════════════════════════════════════════
 // i18n ENGINE
@@ -840,28 +877,33 @@ function setLang(lang) {
   renderItinerary();
   renderPlaces();
   renderTransportTips();
+  // Update countdown text if wedding has passed
+  if (weddingPassed) updateCountdown();
+  // Update venue map language
+  const venueMap = document.getElementById('venueMap');
+  if (venueMap) venueMap.src = 'https://maps.google.com/maps?q=Dar+Ain+Asserdoun+Bouskoura+Casablanca&z=12&hl=' + lang + '&output=embed';
 }
 
 // ══════════════════════════════════════════════
 // COUNTDOWN
 // ══════════════════════════════════════════════
-(function countdown() {
-  const wedding = new Date('2025-08-28T16:00:00+01:00');
-  function update() {
-    const diff = wedding - new Date();
-    if (diff <= 0) {
-      const msg = T[currentLang] && T[currentLang]['hero.arrived'] || 'Le grand jour est arrivé !';
-      document.getElementById('countdown').innerHTML = '<div style="font-family:Cormorant Garamond,serif;font-size:1.5rem;color:var(--gold-bright);font-style:italic;">' + msg + '</div>';
-      return;
-    }
-    document.getElementById('cd-days').textContent = Math.floor(diff / 86400000);
-    document.getElementById('cd-hours').textContent = Math.floor((diff % 86400000) / 3600000);
-    document.getElementById('cd-min').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-    document.getElementById('cd-sec').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
-    requestAnimationFrame(update);
+const WEDDING_DATE = new Date('2025-08-28T16:00:00+01:00');
+let weddingPassed = false;
+function updateCountdown() {
+  const diff = WEDDING_DATE - new Date();
+  if (diff <= 0) {
+    weddingPassed = true;
+    const msg = T[currentLang] && T[currentLang]['hero.arrived'] || 'Le grand jour est arrivé !';
+    document.getElementById('countdown').innerHTML = '<div style="font-family:Cormorant Garamond,serif;font-size:1.5rem;color:var(--gold-bright);font-style:italic;">' + msg + '</div>';
+    return;
   }
-  update();
-})();
+  document.getElementById('cd-days').textContent = Math.floor(diff / 86400000);
+  document.getElementById('cd-hours').textContent = Math.floor((diff % 86400000) / 3600000);
+  document.getElementById('cd-min').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+  document.getElementById('cd-sec').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+  requestAnimationFrame(updateCountdown);
+}
+updateCountdown();
 
 // ══════════════════════════════════════════════
 // REVEAL ON SCROLL
@@ -895,7 +937,7 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
 // ══════════════════════════════════════════════
 function updateExplorerMap() {
   const iframe = document.getElementById('explorerMap');
-  if (iframe) iframe.src = EXPLORER_MAP_URLS[currentDur] || EXPLORER_MAP_URLS.weekend;
+  if (iframe) iframe.src = getExplorerMapUrl(currentDur);
 }
 
 function renderItinerary() {
@@ -923,11 +965,12 @@ function renderPlaces() {
     html += '<div class="explore-cards">';
     cityPlaces.forEach(p => {
       const desc = p.desc[currentLang] || p.desc.fr;
-      html += '<div class="explore-card" data-place-id="' + p.id + '">' +
+      const viewLabel = {fr:'Voir sur la carte',en:'View on map',de:'Auf Karte ansehen'}[currentLang] || 'Voir sur la carte';
+      html += '<div class="explore-card clickable" data-place-id="' + p.id + '" onclick="openMapModal(\'' + p.name.replace(/'/g,"\\'") + '\',' + p.lat + ',' + p.lng + ',\'' + p.maps + '\')">' +
         '<h4>' + p.name + '</h4><p>' + desc + '</p>' +
         '<div class="explore-card-footer">' +
         '<span class="explore-badge">' + p.transport + '</span>' +
-        '<a href="' + p.maps + '" target="_blank" class="explore-link">Voir <span class="arrow">→</span></a>' +
+        '<span class="explore-link">' + viewLabel + ' <span class="arrow">→</span></span>' +
         '</div></div>';
     });
     html += '</div>';
@@ -957,6 +1000,77 @@ document.querySelectorAll('.dur-btn').forEach(btn => {
 renderItinerary();
 renderPlaces();
 renderTransportTips();
+
+// ══════════════════════════════════════════════
+// MAP ZOOM CONTROLS
+// ══════════════════════════════════════════════
+function mapZoom(mapId, delta) {
+  const iframe = document.getElementById(mapId);
+  if (!iframe) return;
+  const src = iframe.src;
+  const match = src.match(/[?&]z=(\d+)/);
+  if (!match) return;
+  const z = Math.min(20, Math.max(1, parseInt(match[1]) + delta));
+  iframe.src = src.replace(/([?&]z=)\d+/, '$1' + z);
+}
+
+// ══════════════════════════════════════════════
+// MAP PLACE MODAL
+// ══════════════════════════════════════════════
+(function() {
+  // Create modal
+  const overlay = document.createElement('div');
+  overlay.className = 'map-modal-overlay';
+  overlay.innerHTML = '<div class="map-modal">' +
+    '<div class="map-modal-header"><h3 id="mapModalTitle"></h3><button class="map-modal-close" onclick="closeMapModal()">✕</button></div>' +
+    '<iframe id="mapModalIframe" src="" allowfullscreen></iframe>' +
+    '<div class="map-modal-footer"><a id="mapModalLink" href="" target="_blank">Ouvrir dans Google Maps →</a></div></div>';
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeMapModal(); });
+})();
+
+function openMapModal(name, lat, lng, mapsUrl) {
+  const overlay = document.querySelector('.map-modal-overlay');
+  document.getElementById('mapModalTitle').textContent = name;
+  document.getElementById('mapModalIframe').src = 'https://maps.google.com/maps?q=' + lat + ',' + lng + '&z=16&hl=' + currentLang + '&output=embed';
+  document.getElementById('mapModalLink').href = mapsUrl;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMapModal() {
+  const overlay = document.querySelector('.map-modal-overlay');
+  overlay.classList.remove('active');
+  document.getElementById('mapModalIframe').src = '';
+  document.body.style.overflow = '';
+}
+
+// Close modal on Escape
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMapModal(); });
+
+// ══════════════════════════════════════════════
+// CLICKABLE NEIGHBORHOODS (venue map section)
+// ══════════════════════════════════════════════
+const QUARTIERS = [
+  {name:'CFC — Casablanca Finance City',lat:33.5530,lng:-7.6030,maps:'https://maps.google.com/?q=CFC+Casablanca+Finance+City'},
+  {name:'Ferme Bretonne',lat:33.5320,lng:-7.5850,maps:'https://maps.google.com/?q=Ferme+Bretonne+Bouskoura'},
+  {name:'Oasis',lat:33.5600,lng:-7.6370,maps:'https://maps.google.com/?q=Oasis+Casablanca'},
+  {name:'CIL',lat:33.5470,lng:-7.5950,maps:'https://maps.google.com/?q=CIL+Casablanca'},
+  {name:'Val Fleuri',lat:33.5430,lng:-7.6280,maps:'https://maps.google.com/?q=Val+Fleuri+Casablanca'},
+  {name:'Maarif',lat:33.5800,lng:-7.6350,maps:'https://maps.google.com/?q=Maarif+Casablanca'},
+  {name:'Racine',lat:33.5880,lng:-7.6310,maps:'https://maps.google.com/?q=Racine+Casablanca'},
+  {name:'Gauthier',lat:33.5870,lng:-7.6240,maps:'https://maps.google.com/?q=Gauthier+Casablanca'}
+];
+
+document.querySelectorAll('.hebergement-col li').forEach(function(li) {
+  const text = li.textContent.trim();
+  const q = QUARTIERS.find(function(q) { return text.includes(q.name.split('—')[0].trim().split(' ')[0]); });
+  if (q) {
+    li.classList.add('clickable');
+    li.title = q.name;
+    li.addEventListener('click', function() { openMapModal(q.name, q.lat, q.lng, q.maps); });
+  }
+});
 
 // ══════════════════════════════════════════════
 // IP GEOLOCATION — Hide gift section for Moroccan IPs

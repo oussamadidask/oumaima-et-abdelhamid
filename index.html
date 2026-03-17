@@ -276,10 +276,15 @@ footer{background:var(--teal-deep);padding:3.5rem 2rem;text-align:center;border-
 
 /* ══ RESPONSIVE ══ */
 @media(max-width:768px){
-  nav .nav-inner{gap:0;flex-wrap:wrap;height:auto;padding:.5rem 0}
-  nav a{font-size:.58rem;padding:.4rem .5rem;letter-spacing:.15em}
+  nav{padding:0 .75rem}
+  nav .nav-inner{gap:0;flex-wrap:wrap;height:auto;padding:.4rem 0;justify-content:center}
+  nav a{font-size:.52rem;padding:.3rem .4rem;letter-spacing:.12em}
   nav .nav-dot{display:none}
-  .hero-location{margin-top:70px}
+  /* Move lang picker into nav flow on mobile */
+  .lang-picker{position:static;margin-left:auto}
+  .lang-current{padding:.25rem .5rem;font-size:.6rem;background:none;border:1px solid rgba(226,183,83,0.2)}
+  .lang-dropdown{right:0;left:auto}
+  .hero-location{margin-top:20px}
   .hero-arch{width:320px;height:440px}
   .countdown{gap:1rem}.countdown-num{font-size:1.8rem}
   .programme-grid{grid-template-columns:1fr 1fr}
@@ -303,18 +308,6 @@ footer{background:var(--teal-deep);padding:3.5rem 2rem;text-align:center;border-
 </head>
 <body>
 
-<!-- ═══ LANGUAGE PICKER ═══ -->
-<div class="lang-picker" id="langPicker">
-  <div class="lang-current" onclick="document.getElementById('langPicker').classList.toggle('open')">
-    <span id="langFlag">🇫🇷</span> <span id="langCode">FR</span> <span class="lang-arrow">▼</span>
-  </div>
-  <div class="lang-dropdown">
-    <div class="lang-option active" data-lang="fr"><span>🇫🇷</span> FR</div>
-    <div class="lang-option" data-lang="en"><span>🇬🇧</span> EN</div>
-    <div class="lang-option" data-lang="de"><span>🇩🇪</span> DE</div>
-  </div>
-</div>
-
 <!-- ═══ NAVIGATION ═══ -->
 <nav id="mainNav">
   <div class="nav-inner">
@@ -327,6 +320,17 @@ footer{background:var(--teal-deep);padding:3.5rem 2rem;text-align:center;border-
     <a href="#explorer" data-i18n="nav.explorer">Explorer</a>
     <span class="nav-dot"></span>
     <a href="#liste" data-i18n="nav.liste">Liste de Mariage</a>
+    <!-- Language picker -->
+    <div class="lang-picker" id="langPicker">
+      <div class="lang-current" onclick="document.getElementById('langPicker').classList.toggle('open')">
+        <span id="langFlag">🇫🇷</span> <span id="langCode">FR</span> <span class="lang-arrow">▼</span>
+      </div>
+      <div class="lang-dropdown">
+        <div class="lang-option active" data-lang="fr"><span>🇫🇷</span> FR</div>
+        <div class="lang-option" data-lang="en"><span>🇬🇧</span> EN</div>
+        <div class="lang-option" data-lang="de"><span>🇩🇪</span> DE</div>
+      </div>
+    </div>
   </div>
 </nav>
 

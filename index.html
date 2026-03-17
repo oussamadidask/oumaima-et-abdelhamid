@@ -267,6 +267,7 @@ footer{background:var(--teal-deep);padding:3.5rem 2rem;text-align:center;border-
   nav .nav-inner{gap:0;flex-wrap:wrap;height:auto;padding:.5rem 0}
   nav a{font-size:.58rem;padding:.4rem .5rem;letter-spacing:.15em}
   nav .nav-dot{display:none}
+  .hero-location{margin-top:70px}
   .hero-arch{width:320px;height:440px}
   .countdown{gap:1rem}.countdown-num{font-size:1.8rem}
   .programme-grid{grid-template-columns:1fr 1fr}
@@ -424,7 +425,7 @@ footer{background:var(--teal-deep);padding:3.5rem 2rem;text-align:center;border-
       <div class="info-card reveal reveal-delay-2">
         <div class="info-icon">👶</div>
         <h3 data-i18n="infos.kids.title">Enfants bienvenus</h3>
-        <p data-i18n="infos.kids.desc">C'est un mariage kif friendly ! Vos enfants sont les bienvenus avec plaisir.</p>
+        <p data-i18n="infos.kids.desc">C'est un mariage kid friendly ! Vos enfants sont les bienvenus avec plaisir.</p>
       </div>
       <div class="info-card reveal">
         <div class="info-icon">🚗</div>
@@ -584,87 +585,114 @@ const PLACES = [
   // ── CASABLANCA ──
   {id:'sqala',name:'La Sqala',city:'casa',cat:'brunch',lat:33.6005,lng:-7.6195,
    desc:{fr:'Cuisine marocaine authentique dans un bastion historique face à l\'Atlantique.',en:'Authentic Moroccan cuisine in a historic bastion facing the Atlantic.',de:'Authentische marokkanische Küche in einer historischen Bastion am Atlantik.'},
-   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=La+Sqala+Casablanca'},
+   maps:'https://maps.google.com/?q=La+Sqala+Casablanca'},
   {id:'holybrunch',name:'Holy Brunch',city:'casa',cat:'brunch',lat:33.5880,lng:-7.6320,
    desc:{fr:'L\'adresse brunch tendance de Casa — ambiance soignée, menu varié et généreux.',en:'The trendy brunch spot in Casa — elegant ambiance, varied and generous menu.',de:'Der angesagte Brunch-Spot in Casa — gepflegte Atmosphäre, vielseitige Karte.'},
-   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Holy+Brunch+Casablanca'},
+   maps:'https://maps.google.com/?q=Holy+Brunch+Casablanca'},
   {id:'organic',name:'Organic Kitchen',city:'casa',cat:'dejeuner',lat:33.5750,lng:-7.6280,
    desc:{fr:'Cuisine saine et généreuse, ingrédients frais. Bowls, wraps et jus naturels.',en:'Healthy and generous cuisine, fresh ingredients. Bowls, wraps and natural juices.',de:'Gesunde, großzügige Küche mit frischen Zutaten. Bowls, Wraps und natürliche Säfte.'},
-   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Organic+Kitchen+Casablanca'},
+   maps:'https://maps.google.com/?q=Organic+Kitchen+Casablanca'},
   {id:'soy',name:'Soy Restaurant',city:'casa',cat:'dejeuner',lat:33.5620,lng:-7.6140,
    desc:{fr:'Restaurant japonais au CFC. Sushis frais, service attentionné, excellent rapport qualité-prix.',en:'Japanese restaurant at CFC. Fresh sushi, attentive service, great value.',de:'Japanisches Restaurant im CFC. Frische Sushis, aufmerksamer Service, top Preis-Leistung.'},
-   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Soy+Restaurant+CFC+Casablanca'},
+   maps:'https://maps.google.com/?q=Soy+Restaurant+CFC+Casablanca'},
   {id:'marche',name:'Marché Central',city:'casa',cat:'dejeuner',lat:33.5920,lng:-7.6180,
    desc:{fr:'Le marché emblématique de Casa. Poisson frais grillé sur place, fruits de mer, ambiance populaire et authentique.',en:'Casa\'s iconic market. Freshly grilled fish, seafood, popular and authentic atmosphere.',de:'Casas ikonischer Markt. Frisch gegrillter Fisch, Meeresfrüchte, authentische Atmosphäre.'},
-   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Marche+Central+Casablanca'},
+   maps:'https://maps.app.goo.gl/wBET18g3r6ZLNeZ97'},
   {id:'rooftop',name:'Le Rooftop — Royal Mansour',city:'casa',cat:'rooftop',lat:33.5930,lng:-7.6200,
    desc:{fr:'La vue la plus iconique sur Casablanca. Cocktails raffinés, coucher de soleil inoubliable.',en:'The most iconic view of Casablanca. Refined cocktails, unforgettable sunset.',de:'Der ikonischste Blick auf Casablanca. Raffinierte Cocktails, unvergesslicher Sonnenuntergang.'},
-   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Royal+Mansour+Casablanca'},
+   maps:'https://maps.google.com/?q=Royal+Mansour+Casablanca'},
   {id:'iloli',name:'Iloli',city:'casa',cat:'diner',lat:33.5850,lng:-7.6240,
    desc:{fr:'Restaurant japonais haut de gamme à Gauthier. Sushi créatif, atmosphère épurée.',en:'Upscale Japanese restaurant in Gauthier. Creative sushi, sleek atmosphere.',de:'Gehobenes japanisches Restaurant in Gauthier. Kreatives Sushi, edle Atmosphäre.'},
-   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Iloli+Casablanca'},
+   maps:'https://maps.google.com/?q=Iloli+Casablanca'},
   {id:'7ciel',name:'7ème Ciel',city:'casa',cat:'diner',lat:33.5860,lng:-7.6350,
    desc:{fr:'Vue panoramique depuis les hauteurs. Cuisine internationale dans un cadre spectaculaire.',en:'Panoramic view from the heights. International cuisine in a spectacular setting.',de:'Panoramablick von den Höhen. Internationale Küche in spektakulärem Rahmen.'},
-   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=7eme+Ciel+Casablanca'},
+   maps:'https://maps.google.com/?q=7eme+Ciel+Casablanca'},
   {id:'cabestan',name:'Le Cabestan',city:'casa',cat:'diner',lat:33.5930,lng:-7.6700,
    desc:{fr:'Dîner face à l\'Atlantique au phare d\'El Hank. Fruits de mer, ambiance romantique.',en:'Dinner facing the Atlantic at El Hank lighthouse. Seafood, romantic atmosphere.',de:'Abendessen mit Blick auf den Atlantik am Leuchtturm El Hank. Meeresfrüchte, romantisch.'},
-   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Le+Cabestan+Casablanca'},
+   maps:'https://maps.google.com/?q=Le+Cabestan+Casablanca'},
+  {id:'sushibar',name:'Sushi Bar — Royal Mansour',city:'casa',cat:'diner',lat:33.5935,lng:-7.6205,
+   desc:{fr:'Sushi bar d\'exception au Royal Mansour. Poisson ultra-frais, cadre somptueux, une expérience inoubliable.',en:'Exceptional sushi bar at the Royal Mansour. Ultra-fresh fish, sumptuous setting, an unforgettable experience.',de:'Außergewöhnliche Sushi-Bar im Royal Mansour. Ultrafrischer Fisch, prachtvolles Ambiente, unvergessliches Erlebnis.'},
+   maps:'https://maps.google.com/?q=Royal+Mansour+Casablanca'},
   {id:'dardada',name:'Dar Dada',city:'casa',cat:'diner',lat:33.5890,lng:-7.6280,
    desc:{fr:'Cuisine traditionnelle marocaine, décor somptueux et spectacle de musique andalouse en soirée.',en:'Traditional Moroccan cuisine, sumptuous decor and Andalusian music show in the evening.',de:'Traditionelle marokkanische Küche, prachtvolle Einrichtung und andalusische Musik am Abend.'},
-   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Dar+Dada+Casablanca'},
+   maps:'https://maps.google.com/?q=Dar+Dada+Casablanca'},
   {id:'laola',name:'La Ola Rooftop',city:'casa',cat:'sortir',lat:33.5920,lng:-7.6700,
    desc:{fr:'Rooftop en bord de mer à Aïn Diab. Ambiance latine, cocktails et musique festive.',en:'Seaside rooftop in Aïn Diab. Latin vibes, cocktails and festive music.',de:'Rooftop am Meer in Aïn Diab. Lateinamerikanische Stimmung, Cocktails und Partymusik.'},
-   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=La+Ola+Rooftop+Casablanca'},
+   maps:'https://maps.google.com/?q=La+Ola+Rooftop+Casablanca'},
   {id:'bandidos',name:'Los Bandidos',city:'casa',cat:'sortir',lat:33.5800,lng:-7.6300,
    desc:{fr:'Soirées latinos à Maarif. Ambiance festive, musique chaleureuse, réservation conseillée.',en:'Latino nights in Maarif. Festive atmosphere, warm music, reservation recommended.',de:'Latino-Abende in Maarif. Festliche Stimmung, warme Musik, Reservierung empfohlen.'},
-   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Los+Bandidos+Casablanca'},
+   maps:'https://maps.google.com/?q=Los+Bandidos+Casablanca'},
   {id:'hassanII',name:'Mosquée Hassan II',city:'casa',cat:'incontournables',lat:33.6086,lng:-7.6326,
    desc:{fr:'L\'une des plus grandes mosquées du monde, sur l\'Atlantique. Visites guidées disponibles.',en:'One of the largest mosques in the world, on the Atlantic. Guided tours available.',de:'Eine der größten Moscheen der Welt, am Atlantik. Führungen verfügbar.'},
-   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Mosquee+Hassan+II+Casablanca'},
+   maps:'https://maps.google.com/?q=Mosquee+Hassan+II+Casablanca'},
   {id:'habous',name:'Quartier Habous',city:'casa',cat:'incontournables',lat:33.5730,lng:-7.6130,
    desc:{fr:'La « nouvelle médina » des années 30. Ruelles authentiques, artisanat, pâtisseries et épices.',en:'The "new medina" from the 1930s. Authentic lanes, crafts, pastries and spices.',de:'Die „neue Medina" der 1930er. Authentische Gassen, Handwerk, Gebäck und Gewürze.'},
-   transport:'À pied / Taxi', maps:'https://maps.google.com/?q=Quartier+Habous+Casablanca'},
+   maps:'https://maps.google.com/?q=Quartier+Habous+Casablanca'},
   {id:'sacrecoeur',name:'Cathédrale du Sacré-Cœur',city:'casa',cat:'incontournables',lat:33.5890,lng:-7.6200,
    desc:{fr:'Joyau architectural mêlant gothique et Art Déco (1930). Espace culturel et expositions.',en:'Architectural gem blending Gothic and Art Deco (1930). Cultural space and exhibitions.',de:'Architektonisches Juwel aus Gotik und Art Déco (1930). Kulturraum und Ausstellungen.'},
-   transport:'À pied / Taxi', maps:'https://maps.google.com/?q=Cathedrale+Sacre+Coeur+Casablanca'},
+   maps:'https://maps.google.com/?q=Cathedrale+Sacre+Coeur+Casablanca'},
   {id:'corniche',name:'Médina & Corniche Aïn Diab',city:'casa',cat:'incontournables',lat:33.5950,lng:-7.6650,
    desc:{fr:'Flânerie dans l\'ancienne médina puis promenade le long du front de mer.',en:'Stroll through the old medina then walk along the seafront.',de:'Bummel durch die alte Medina, dann Spaziergang entlang der Küste.'},
-   transport:'À pied / Taxi', maps:'https://maps.google.com/?q=Corniche+Ain+Diab+Casablanca'},
+   maps:'https://maps.google.com/?q=Corniche+Ain+Diab+Casablanca'},
   // ── RABAT ──
   {id:'tourhassan',name:'Mausolée Mohammed V & Tour Hassan',city:'rabat',cat:'histoire',lat:34.0247,lng:-6.8227,
    desc:{fr:'Le cœur historique de Rabat. Architecture royale majestueuse, gardes en tenue d\'apparat.',en:'The historic heart of Rabat. Majestic royal architecture, ceremonial guards.',de:'Das historische Herz von Rabat. Majestätische königliche Architektur, Ehrenwachen.'},
-   transport:'Train + Taxi', maps:'https://maps.google.com/?q=Tour+Hassan+Rabat'},
+   maps:'https://maps.google.com/?q=Tour+Hassan+Rabat'},
   {id:'oudayas',name:'Kasbah des Oudayas',city:'rabat',cat:'histoire',lat:34.0320,lng:-6.8360,
    desc:{fr:'Kasbah médiévale aux ruelles bleues et blanches. Vue magnifique sur l\'Atlantique.',en:'Medieval kasbah with blue and white alleys. Magnificent Atlantic views.',de:'Mittelalterliche Kasbah mit blau-weißen Gassen. Herrlicher Atlantikblick.'},
-   transport:'Train + Taxi', maps:'https://maps.google.com/?q=Kasbah+Oudayas+Rabat'},
+   maps:'https://maps.google.com/?q=Kasbah+Oudayas+Rabat'},
   {id:'chellah',name:'Chellah',city:'rabat',cat:'histoire',lat:34.0100,lng:-6.8170,
    desc:{fr:'Nécropole mérinide sur des ruines romaines. Jardins luxuriants, cigognes dans les minarets.',en:'Merinid necropolis on Roman ruins. Lush gardens, storks nesting in minarets.',de:'Merinidische Nekropole auf römischen Ruinen. Üppige Gärten, Störche in den Minaretten.'},
-   transport:'Train + Taxi', maps:'https://maps.google.com/?q=Chellah+Rabat'},
+   maps:'https://maps.google.com/?q=Chellah+Rabat'},
   {id:'rabatmedina',name:'Médina de Rabat',city:'rabat',cat:'incontournables',lat:34.0280,lng:-6.8310,
    desc:{fr:'Ruelles animées, souks colorés, artisanat marocain authentique. Moins touristique que Marrakech.',en:'Lively alleys, colorful souks, authentic Moroccan crafts. Less touristy than Marrakech.',de:'Lebhafte Gassen, farbenfrohe Souks, authentisches Handwerk. Weniger touristisch als Marrakesch.'},
-   transport:'Train + Taxi', maps:'https://maps.google.com/?q=Medina+Rabat'},
+   maps:'https://maps.google.com/?q=Medina+Rabat'},
   {id:'m6museum',name:'Musée Mohammed VI d\'Art Moderne',city:'rabat',cat:'incontournables',lat:34.0190,lng:-6.8350,
    desc:{fr:'Le plus grand musée d\'art contemporain du Maroc. Collections permanentes et expositions temporaires.',en:'Morocco\'s largest contemporary art museum. Permanent collections and temporary exhibitions.',de:'Marokkos größtes Museum für zeitgenössische Kunst. Dauer- und Wechselausstellungen.'},
-   transport:'Train + Taxi', maps:'https://maps.google.com/?q=Musee+Mohammed+VI+Rabat'},
+   maps:'https://maps.google.com/?q=Musee+Mohammed+VI+Rabat'},
+  {id:'darlina',name:'Dar Lina',city:'rabat',cat:'dejeuner',lat:34.0260,lng:-6.8340,
+   desc:{fr:'Cuisine marocaine raffinée dans un riad de la médina. Tajines, pastilla et terrasse intimiste.',en:'Refined Moroccan cuisine in a medina riad. Tagines, pastilla, and intimate terrace.',de:'Gehobene marokkanische Küche in einem Riad der Medina. Tajines, Pastilla und intime Terrasse.'},
+   maps:'https://maps.google.com/?q=Dar+Lina+Rabat'},
+  {id:'ledhow',name:'Le Dhow',city:'rabat',cat:'diner',lat:34.0310,lng:-6.8380,
+   desc:{fr:'Restaurant sur un bateau face à la Kasbah des Oudayas. Cuisine méditerranéenne, ambiance unique.',en:'Restaurant on a boat facing the Kasbah of the Udayas. Mediterranean cuisine, unique setting.',de:'Restaurant auf einem Boot gegenüber der Kasbah der Udayas. Mediterrane Küche, einzigartig.'},
+   maps:'https://maps.google.com/?q=Le+Dhow+Rabat'},
+  {id:'cosmopolitan',name:'Cosmopolitan',city:'rabat',cat:'diner',lat:34.0170,lng:-6.8320,
+   desc:{fr:'Restaurant moderne dans le quartier de l\'Agdal. Cuisine fusion, cocktails et terrasse.',en:'Modern restaurant in the Agdal district. Fusion cuisine, cocktails and terrace.',de:'Modernes Restaurant im Viertel Agdal. Fusion-Küche, Cocktails und Terrasse.'},
+   maps:'https://maps.google.com/?q=Cosmopolitan+Rabat'},
+  {id:'cafedesoudayas',name:'Café Maure des Oudayas',city:'rabat',cat:'rooftop',lat:34.0325,lng:-6.8365,
+   desc:{fr:'Thé à la menthe et pâtisseries dans le jardin andalou de la Kasbah. Vue sur le Bouregreg.',en:'Mint tea and pastries in the Kasbah\'s Andalusian garden. Views over the Bouregreg.',de:'Minztee und Gebäck im andalusischen Garten der Kasbah. Blick auf den Bouregreg.'},
+   maps:'https://maps.google.com/?q=Cafe+Maure+Oudayas+Rabat'},
+  {id:'armstrong',name:'Armstrong Jazz Bar',city:'rabat',cat:'sortir',lat:34.0180,lng:-6.8340,
+   desc:{fr:'Bar à jazz cosy dans le quartier Agdal. Cocktails, musique live, ambiance feutrée.',en:'Cozy jazz bar in the Agdal district. Cocktails, live music, intimate atmosphere.',de:'Gemütliche Jazzbar im Viertel Agdal. Cocktails, Live-Musik, gedämpfte Atmosphäre.'},
+   maps:'https://maps.google.com/?q=Armstrong+Jazz+Bar+Rabat'},
   // ── TANGER ──
   {id:'capspartel',name:'Cap Spartel',city:'tanger',cat:'incontournables',lat:35.7920,lng:-5.9200,
    desc:{fr:'Là où l\'Atlantique rencontre la Méditerranée. Phare iconique, falaises spectaculaires.',en:'Where the Atlantic meets the Mediterranean. Iconic lighthouse, spectacular cliffs.',de:'Wo der Atlantik auf das Mittelmeer trifft. Ikonischer Leuchtturm, spektakuläre Klippen.'},
-   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Cap+Spartel+Tanger'},
+   maps:'https://maps.google.com/?q=Cap+Spartel+Tanger'},
   {id:'hercule',name:'Grottes d\'Hercule',city:'tanger',cat:'incontournables',lat:35.7610,lng:-5.9380,
    desc:{fr:'Grottes légendaires avec ouverture sur l\'océan en forme de carte d\'Afrique.',en:'Legendary caves with an ocean opening shaped like the map of Africa.',de:'Legendäre Höhlen mit einer Öffnung zum Meer in Form der Afrikakarte.'},
-   transport:'Taxi / VTC', maps:'https://maps.google.com/?q=Grottes+Hercule+Tanger'},
+   maps:'https://maps.google.com/?q=Grottes+Hercule+Tanger'},
   {id:'kasbahtanger',name:'Kasbah de Tanger',city:'tanger',cat:'histoire',lat:35.7880,lng:-5.8120,
    desc:{fr:'Forteresse surplombant le détroit de Gibraltar. Musée, jardins et vue à couper le souffle.',en:'Fortress overlooking the Strait of Gibraltar. Museum, gardens and breathtaking views.',de:'Festung über der Straße von Gibraltar. Museum, Gärten und atemberaubender Ausblick.'},
-   transport:'À pied', maps:'https://maps.google.com/?q=Kasbah+Tanger'},
+   maps:'https://maps.google.com/?q=Kasbah+Tanger'},
   {id:'cafehafa',name:'Café Hafa',city:'tanger',cat:'rooftop',lat:35.7870,lng:-5.8200,
    desc:{fr:'Café mythique depuis 1921. Terrasses en escalier face au détroit, thé à la menthe légendaire.',en:'Mythical café since 1921. Terraced seating facing the strait, legendary mint tea.',de:'Legendäres Café seit 1921. Terrassierte Sitzplätze mit Blick auf die Meerenge, legendärer Minztee.'},
-   transport:'À pied / Taxi', maps:'https://maps.google.com/?q=Cafe+Hafa+Tanger'},
+   maps:'https://maps.google.com/?q=Cafe+Hafa+Tanger'},
   {id:'medinatanger',name:'Médina de Tanger',city:'tanger',cat:'incontournables',lat:35.7860,lng:-5.8130,
    desc:{fr:'Dédale de ruelles vivantes, Grand et Petit Socco, boutiques d\'artisanat, ambiance unique.',en:'Maze of lively lanes, Grand and Petit Socco, craft shops, unique atmosphere.',de:'Labyrinth lebhafter Gassen, Grand und Petit Socco, Handwerksläden, einzigartige Atmosphäre.'},
-   transport:'À pied', maps:'https://maps.google.com/?q=Medina+Tanger'},
+   maps:'https://maps.google.com/?q=Medina+Tanger'},
   {id:'terrasseparesseux',name:'Terrasse des Paresseux',city:'tanger',cat:'rooftop',lat:35.7860,lng:-5.8070,
    desc:{fr:'Esplanade panoramique sur le port et la côte espagnole. Le spot photo de Tanger.',en:'Panoramic esplanade overlooking the port and Spanish coast. Tanger\'s best photo spot.',de:'Panorama-Esplanade mit Blick auf den Hafen und die spanische Küste. Tangers bester Fotospot.'},
-   transport:'À pied', maps:'https://maps.google.com/?q=Terrasse+des+Paresseux+Tanger'},
+   maps:'https://maps.google.com/?q=Terrasse+des+Paresseux+Tanger'},
+  {id:'elmorocco',name:'El Morocco Club',city:'tanger',cat:'diner',lat:35.7870,lng:-5.8110,
+   desc:{fr:'Restaurant-bar dans la médina. Cuisine fusion maroco-méditerranéenne, décor Art Déco.',en:'Restaurant-bar in the medina. Moroccan-Mediterranean fusion, Art Deco decor.',de:'Restaurant-Bar in der Medina. Marokkanisch-mediterrane Fusion, Art-Déco-Dekor.'},
+   maps:'https://maps.google.com/?q=El+Morocco+Club+Tanger'},
+  {id:'legrandbazar',name:'Le Grand Bazar',city:'tanger',cat:'dejeuner',lat:35.7865,lng:-5.8125,
+   desc:{fr:'Restaurant dans la médina avec terrasse sur le Grand Socco. Tajines et grillades.',en:'Restaurant in the medina with a terrace on the Grand Socco. Tagines and grills.',de:'Restaurant in der Medina mit Terrasse am Grand Socco. Tajines und Grillgerichte.'},
+   maps:'https://maps.google.com/?q=Le+Grand+Bazar+Tanger'},
+  {id:'clandestino',name:'Clandestino',city:'tanger',cat:'sortir',lat:35.7855,lng:-5.8100,
+   desc:{fr:'Bar branché dans la médina. Cocktails créatifs, DJ sets et ambiance cosmopolite.',en:'Trendy bar in the medina. Creative cocktails, DJ sets and cosmopolitan vibes.',de:'Angesagte Bar in der Medina. Kreative Cocktails, DJ-Sets und kosmopolitisches Flair.'},
+   maps:'https://maps.google.com/?q=Clandestino+Tanger'},
 ];
 
 // Itineraries by duration
@@ -736,19 +764,19 @@ const ITINERARIES = {
 
 const TRANSPORT_TIPS = {
   weekend: {
-    fr: '🚂 <strong>Casa → Rabat :</strong> Train ONCF depuis la gare <strong>Casa-Voyageurs</strong> — environ 1h, départs fréquents, confortable et économique. À Rabat, arrivée à <strong>Rabat-Ville</strong>, la gare historique récemment rénovée.<br>🚗 Sur place : <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> et <a href="https://indrive.com" target="_blank">InDrive</a> fonctionnent aussi pour les trajets interurbains.',
-    en: '🚂 <strong>Casa → Rabat:</strong> ONCF train from <strong>Casa-Voyageurs</strong> station — about 1h, frequent departures, comfortable and affordable. In Rabat, arrive at <strong>Rabat-Ville</strong>, the recently renovated historic station.<br>🚗 Locally: <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> and <a href="https://indrive.com" target="_blank">InDrive</a> also work for intercity trips.',
-    de: '🚂 <strong>Casa → Rabat:</strong> ONCF-Zug ab <strong>Casa-Voyageurs</strong> — ca. 1 Std., häufige Abfahrten, komfortabel und günstig. In Rabat Ankunft an <strong>Rabat-Ville</strong>, dem kürzlich renovierten historischen Bahnhof.<br>🚗 Vor Ort: <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> und <a href="https://indrive.com" target="_blank">InDrive</a> funktionieren auch für Überlandfahrten.'
+    fr: '🚂 <strong>Casa → Rabat :</strong> Train ONCF depuis <strong>Casa-Voyageurs</strong> — environ 1h, départs fréquents. Gares à Rabat : <strong>Rabat-Ville</strong> (centre historique) ou <strong>Rabat-Agdal</strong> (quartier moderne).<br>🚗 Sur place : <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> et <a href="https://indrive.com" target="_blank">InDrive</a> pour les déplacements.',
+    en: '🚂 <strong>Casa → Rabat:</strong> ONCF train from <strong>Casa-Voyageurs</strong> — about 1h, frequent departures. Rabat stations: <strong>Rabat-Ville</strong> (historic center) or <strong>Rabat-Agdal</strong> (modern district).<br>🚗 Locally: <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> and <a href="https://indrive.com" target="_blank">InDrive</a> for getting around.',
+    de: '🚂 <strong>Casa → Rabat:</strong> ONCF-Zug ab <strong>Casa-Voyageurs</strong> — ca. 1 Std., häufige Abfahrten. Bahnhöfe in Rabat: <strong>Rabat-Ville</strong> (historisches Zentrum) oder <strong>Rabat-Agdal</strong> (modernes Viertel).<br>🚗 Vor Ort: <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> und <a href="https://indrive.com" target="_blank">InDrive</a> für Fahrten.'
   },
   week: {
-    fr: '🚂 <strong>Casa → Rabat :</strong> Train ONCF depuis <strong>Casa-Voyageurs</strong> (1h, fréquent). Arrivée à <strong>Rabat-Ville</strong>, gare historique récemment rénovée.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> et <a href="https://indrive.com" target="_blank">InDrive</a> pour les trajets interurbains et locaux.',
-    en: '🚂 <strong>Casa → Rabat:</strong> ONCF train from <strong>Casa-Voyageurs</strong> (1h, frequent). Arrive at <strong>Rabat-Ville</strong>, recently renovated historic station.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> and <a href="https://indrive.com" target="_blank">InDrive</a> for intercity and local trips.',
-    de: '🚂 <strong>Casa → Rabat:</strong> ONCF-Zug ab <strong>Casa-Voyageurs</strong> (1 Std., häufig). Ankunft an <strong>Rabat-Ville</strong>, kürzlich renovierter historischer Bahnhof.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> und <a href="https://indrive.com" target="_blank">InDrive</a> für Überland- und Lokalfahrten.'
+    fr: '🚂 <strong>Casa → Rabat :</strong> Train ONCF depuis <strong>Casa-Voyageurs</strong> (1h, fréquent). Gares à Rabat : <strong>Rabat-Ville</strong> ou <strong>Rabat-Agdal</strong>.<br>🚄 <strong>Al Boraq :</strong> Le TGV le plus rapide d\'Afrique relie Casa à Tanger en <strong>2h15</strong> via Rabat (arrêt <strong>Rabat-Agdal</strong>). Réservez sur <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> et <a href="https://indrive.com" target="_blank">InDrive</a> pour les trajets locaux.',
+    en: '🚂 <strong>Casa → Rabat:</strong> ONCF train from <strong>Casa-Voyageurs</strong> (1h, frequent). Rabat stations: <strong>Rabat-Ville</strong> or <strong>Rabat-Agdal</strong>.<br>🚄 <strong>Al Boraq:</strong> Africa\'s fastest high-speed train connects Casa to Tangier in <strong>2h15</strong> via Rabat (stop at <strong>Rabat-Agdal</strong>). Book on <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> and <a href="https://indrive.com" target="_blank">InDrive</a> for local trips.',
+    de: '🚂 <strong>Casa → Rabat:</strong> ONCF-Zug ab <strong>Casa-Voyageurs</strong> (1 Std., häufig). Bahnhöfe in Rabat: <strong>Rabat-Ville</strong> oder <strong>Rabat-Agdal</strong>.<br>🚄 <strong>Al Boraq:</strong> Afrikas schnellster Hochgeschwindigkeitszug verbindet Casa mit Tanger in <strong>2:15 Std.</strong> über Rabat (Halt <strong>Rabat-Agdal</strong>). Buchen auf <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> und <a href="https://indrive.com" target="_blank">InDrive</a> für Lokalfahrten.'
   },
   long: {
-    fr: '🚄 <strong>TGV Al Boraq :</strong> Le train à grande vitesse relie Casa à Tanger en <strong>2h15</strong> via Rabat (1h20 Rabat→Tanger). Départ depuis <strong>Casa-Voyageurs</strong>, arrêt à <strong>Rabat-Agdal</strong>, arrivée à <strong>Tanger-Ville</strong>. Réservez sur <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚂 <strong>Casa → Rabat :</strong> Train classique ONCF (1h, fréquent) depuis Casa-Voyageurs → Rabat-Ville.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> et <a href="https://indrive.com" target="_blank">InDrive</a> fonctionnent aussi en interurbain.',
-    en: '🚄 <strong>Al Boraq TGV:</strong> High-speed train connects Casa to Tangier in <strong>2h15</strong> via Rabat (1h20 Rabat→Tangier). Departs from <strong>Casa-Voyageurs</strong>, stops at <strong>Rabat-Agdal</strong>, arrives at <strong>Tanger-Ville</strong>. Book on <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚂 <strong>Casa → Rabat:</strong> Classic ONCF train (1h, frequent) from Casa-Voyageurs → Rabat-Ville.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> and <a href="https://indrive.com" target="_blank">InDrive</a> also work for intercity.',
-    de: '🚄 <strong>TGV Al Boraq:</strong> Der Hochgeschwindigkeitszug verbindet Casa mit Tanger in <strong>2:15 Std.</strong> über Rabat (1:20 Rabat→Tanger). Abfahrt ab <strong>Casa-Voyageurs</strong>, Halt in <strong>Rabat-Agdal</strong>, Ankunft in <strong>Tanger-Ville</strong>. Buchen auf <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚂 <strong>Casa → Rabat:</strong> Klassischer ONCF-Zug (1 Std., häufig) ab Casa-Voyageurs → Rabat-Ville.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> und <a href="https://indrive.com" target="_blank">InDrive</a> funktionieren auch für Überlandfahrten.'
+    fr: '🚄 <strong>TGV Al Boraq :</strong> Le train à grande vitesse le plus rapide d\'Afrique relie Casa à Tanger en <strong>2h15</strong> via Rabat. Départ depuis <strong>Casa-Voyageurs</strong>, arrêts à <strong>Rabat-Agdal</strong> (1h20 Rabat→Tanger) et arrivée à <strong>Tanger-Ville</strong>. Réservez sur <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚂 <strong>Casa → Rabat :</strong> Train classique ONCF (1h, fréquent). Gares : Casa-Voyageurs → Rabat-Ville ou Rabat-Agdal.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> et <a href="https://indrive.com" target="_blank">InDrive</a> pour les déplacements locaux.',
+    en: '🚄 <strong>Al Boraq TGV:</strong> Africa\'s fastest high-speed train connects Casa to Tangier in <strong>2h15</strong> via Rabat. Departs from <strong>Casa-Voyageurs</strong>, stops at <strong>Rabat-Agdal</strong> (1h20 Rabat→Tangier), arrives at <strong>Tanger-Ville</strong>. Book on <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚂 <strong>Casa → Rabat:</strong> Classic ONCF train (1h, frequent). Stations: Casa-Voyageurs → Rabat-Ville or Rabat-Agdal.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> and <a href="https://indrive.com" target="_blank">InDrive</a> for local trips.',
+    de: '🚄 <strong>TGV Al Boraq:</strong> Afrikas schnellster Hochgeschwindigkeitszug verbindet Casa mit Tanger in <strong>2:15 Std.</strong> über Rabat. Abfahrt ab <strong>Casa-Voyageurs</strong>, Halt in <strong>Rabat-Agdal</strong> (1:20 Rabat→Tanger), Ankunft in <strong>Tanger-Ville</strong>. Buchen auf <a href="https://www.oncf.ma" target="_blank">oncf.ma</a>.<br>🚂 <strong>Casa → Rabat:</strong> Klassischer ONCF-Zug (1 Std., häufig). Bahnhöfe: Casa-Voyageurs → Rabat-Ville oder Rabat-Agdal.<br>🚗 <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> und <a href="https://indrive.com" target="_blank">InDrive</a> für Lokalfahrten.'
   }
 };
 
@@ -769,7 +797,7 @@ const T = {
     'infos.lieu.title':'Lieu','infos.lieu.desc':'Dar Aïn Asserdoun, Bouskoura — à 20 min du centre de Casablanca. <a href="https://maps.app.goo.gl/xvsgP3aBGiTaRvVF6" target="_blank">Voir sur Google Maps</a>',
     'infos.dress.title':'Dress Code',
     'infos.dress.desc':'Tenue élégante — caftan et robes sont les bienvenus. Prévoir un éventail et une petite laine : nous sommes en extérieur, il peut faire chaud comme froid.',
-    'infos.kids.title':'Enfants bienvenus','infos.kids.desc':'C\'est un mariage kif friendly ! Vos enfants sont les bienvenus avec plaisir.',
+    'infos.kids.title':'Enfants bienvenus','infos.kids.desc':'C\'est un mariage kid friendly ! Vos enfants sont les bienvenus avec plaisir.',
     'infos.transport.title':'Se rendre au mariage',
     'infos.transport.desc':'Utilisez <a href="https://play.google.com/store/apps/details?id=com.careem.acma" target="_blank">Careem</a> ou <a href="https://indrive.com" target="_blank">InDrive</a> pour venir. Un parking est disponible sur place. Pour le retour, des chauffeurs seront disponibles avec tarif préférentiel.',
     'infos.airport.title':'Aéroport',
@@ -988,7 +1016,6 @@ function renderPlaces() {
       html += '<div class="explore-card clickable" data-place-id="' + p.id + '" onclick="openMapModal(\'' + p.name.replace(/'/g,"\\'") + '\',' + p.lat + ',' + p.lng + ',\'' + p.maps + '\')">' +
         '<h4>' + p.name + '</h4><p>' + desc + '</p>' +
         '<div class="explore-card-footer">' +
-        '<span class="explore-badge">' + p.transport + '</span>' +
         '<span class="explore-link">' + viewLabel + ' <span class="arrow">→</span></span>' +
         '</div></div>';
     });
